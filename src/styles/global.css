@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-base: "Noto Sans JP", "Roboto", sans-serif;
+}
+
+/* カスタムのベーススタイル */
+@layer base {
+}
+
+/* カスタムコンポーネント */
+@layer components {
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: none;
+  }
+  
+  .btn-primary {
+    background-color: rgb(37 99 235);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: rgb(29 78 216);
+    transform: translateY(-1px);
+  }
+  
+  .btn-secondary {
+    background-color: rgb(229 231 235);
+    color: rgb(17 24 39);
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgb(209 213 219);
+    transform: translateY(-1px);
+  }
+}
+
+/* カスタムユーティリティ */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .font-japanese {
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  
+  .font-roboto {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .font-weight-thin {
+    font-weight: 100;
+  }
+  
+  .font-weight-light {
+    font-weight: 300;
+  }
+  
+  .font-weight-regular {
+    font-weight: 400;
+  }
+  
+  .font-weight-medium {
+    font-weight: 500;
+  }
+  
+  .font-weight-bold {
+    font-weight: 700;
+  }
+  
+  .font-weight-black {
+    font-weight: 900;
+  }
+}
