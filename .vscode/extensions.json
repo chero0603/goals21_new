@@ -3,10 +3,9 @@
     "astro-build.astro-vscode",
     "bradlc.vscode-tailwindcss",
     "formulahendry.auto-rename-tag",
-    "biomejs.biome",
     "ms-vscode.vscode-typescript-next",
     "bradlc.vscode-tailwindcss",
     "csstools.postcss"
   ],
-  "unwantedRecommendations": []
+  "unwantedRecommendations": ["biomejs.biome"]
 }

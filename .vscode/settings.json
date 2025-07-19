@@ -54,5 +54,8 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
-  }
+  },
+  
+  // Biome linterを無効化
+  "biome.enabled": false
 }

@@ -1,21 +1,48 @@
 ---
 import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = '海外口座解約手続サポート | 現地渡航不要・英語力不要で解約完了',
+  description = '海外口座の解約手続きを完全サポート。現地に行かずに口座解約と預金送金が可能。英語対応や書類作成も全てお任せください。',
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="海外口座,解約手続き,預金送金,海外銀行,現地渡航不要,英語不要,サポート"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://gold-t.tokyo/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>海外口座解約サポート | Goals21</title>
-    <meta
-      name="description"
-      content="海外口座の解約手続きを完全サポート。現地に行かずに口座を閉じ、預金を安全に送金できます。"
-    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "海外銀行お助けネット",
+        "description": "海外口座の解約手続きを完全サポート。現地に行かずに口座解約と預金送金が可能。",
+        "url": "https://gold-t.tokyo/",
+        "serviceType": "海外口座解約手続サポート",
+        "areaServed": "日本",
+        "email": "support@gold-t.tokyo"
+      }
+    </script>
   </head>
-  <body class="font-base">
-    <slot />
+  <body itemscope itemtype="https://schema.org/WebPage" class="font-base">
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
