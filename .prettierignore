@@ -1,0 +1,32 @@
+# Prettier ignore file
+# ビルド出力
+dist/
+build/
+.astro/
+
+# 依存関係
+node_modules/
+
+# ログファイル
+*.log
+
+# 環境設定
+.env*
+
+# IDE/エディター
+.vscode/
+.idea/
+
+# OS生成ファイル
+.DS_Store
+Thumbs.db
+
+# パッケージマネージャー
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lock
+
+# 一時ファイル
+*.tmp
+*.temp
