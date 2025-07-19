@@ -2,6 +2,8 @@
   "name": "goals21_new",
   "version": "0.0.1",
   "dependencies": {
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/mdi-light": "^1.2.2",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.0"
   },
@@ -15,6 +17,9 @@
   },
   "type": "module",
   "devDependencies": {
+    "@iconify/json": "^2.2.359",
+    "@iconify/tailwind4": "^1.0.6",
+    "astro-icon": "^1.1.5",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14"

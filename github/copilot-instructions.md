@@ -17,6 +17,10 @@ GitHub Copilotを使用して開発を効率化するためのガイドライン
 - スタイルの設定は基本的にtailwind CSSのユーティリティクラスを使用します
 - htmlタグへのstyle属性の追加は避けてユーティリティクラスで実現してください
 - CSSでカラーは基本tailwind CSSを利用しますがカラー指定する際はoklchを使用します
+- アイコンはMaterial Design Iconsを使用します
+- アイコンのインポートは`import { Icon } from 'astro-icon';`
+- アイコンの使用は`<Icon name="mdi:home" />`のように行います
+- アイコンのクラス名は`<span class="icon-[mdi-light--home]"></span>`のように使用します
 
 ## プロンプトの作成
 

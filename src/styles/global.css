@@ -8,4 +8,6 @@
   --font-base: "Noto Sans JP", "Roboto", sans-serif;
 }
 
+@plugin "@iconify/tailwind4";
+
 /* 必要なスタイルはTailwind CSSのユーティリティクラスで実現 */
