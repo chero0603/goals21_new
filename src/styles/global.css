@@ -6,8 +6,6 @@
 
 @theme {
   --font-base: "Noto Sans JP", "Roboto", sans-serif;
-  --font-japanese: "Noto Sans JP", sans-serif;
-  --font-roboto: "Roboto", sans-serif;
 }
 
 /* 必要なスタイルはTailwind CSSのユーティリティクラスで実現 */
