@@ -1,0 +1,54 @@
+{
+  // Astro設定: TypeScriptサポートを有効化し、package.jsonからの自動インポートを設定
+  // 必須: AstroプロジェクトでTypeScriptを使用する場合
+  "astro.typescript.enabled": true,
+  "astro.language-server.typescript.preferences.includePackageJsonAutoImports": "auto",
+
+  // フォーマッター設定
+  "[astro]": {
+    // Astroファイルの整形を自動化
+    // 必須: Astroファイルのフォーマットとコードアクションを保存時に実行
+    "editor.defaultFormatter": "astro-build.astro-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[javascript]": {
+    // JavaScriptファイルの整形を自動化
+    // 必須: 保存時にフォーマットとコードアクションを実行
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.biome": "explicit",
+      "source.organizeImports.biome": "explicit"
+    }
+  },
+  "[typescript]": {
+    // TypeScriptファイルの整形を自動化
+    // 必須: 保存時にフォーマットとコードアクションを実行
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.biome": "explicit",
+      "source.organizeImports.biome": "explicit"
+    }
+  },
+  "[json]": {
+    // JSONファイルの整形を自動化
+    // 必須: JSONファイルのフォーマットを保存時に実行
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    // JSONCファイルの整形を自動化
+    // 必須: JSONCファイルのフォーマットを保存時に実行
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[css]": {
+    // CSSファイルの整形を自動化
+    // 必須: TailwindCSSのクラス名補完と整形をサポート
+    "editor.defaultFormatter": "bradlc.vscode-tailwindcss",
+    "editor.formatOnSave": true
+  }
+}

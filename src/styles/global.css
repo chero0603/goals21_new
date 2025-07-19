@@ -5,7 +5,7 @@
 /* tailwindcss関数とディレクティブマニュアル:https://tailwindcss.com/docs/functions-and-directives */
 
 @theme {
-  --font-base: "Noto Sans JP", "Roboto", sans-serif;
+	--font-base: "Noto Sans JP", "Roboto", sans-serif;
 }
 
 /* 必要なスタイルはTailwind CSSのユーティリティクラスで実現 */
