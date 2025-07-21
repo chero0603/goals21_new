@@ -5,7 +5,32 @@
 /* tailwindcss関数とディレクティブマニュアル:https://tailwindcss.com/docs/functions-and-directives */
 
 @theme {
+  /* フォントにNoto Sans JPとRobotoを指定 */
   --font-base: "Noto Sans JP", "Roboto", sans-serif;
+  /* プライマリーカラーにskyを指定 */
+  --color-primary-50: var(--color-sky-50);
+  --color-primary-100: var(--color-sky-100);
+  --color-primary-200: var(--color-sky-200);
+  --color-primary-300: var(--color-sky-300);
+  --color-primary-400: var(--color-sky-400);
+  --color-primary-500: var(--color-sky-500);
+  --color-primary-600: var(--color-sky-600);
+  --color-primary-700: var(--color-sky-700);
+  --color-primary-800: var(--color-sky-800);
+  --color-primary-900: var(--color-sky-900);
+  --color-primary-950: var(--color-sky-950);
+  /* アクセントカラーにyellowを指定 */
+  --color-accent-50: var(--color-yellow-50);
+  --color-accent-100: var(--color-yellow-100);
+  --color-accent-200: var(--color-yellow-200);
+  --color-accent-300: var(--color-yellow-300);
+  --color-accent-400: var(--color-yellow-400);
+  --color-accent-500: var(--color-yellow-500);
+  --color-accent-600: var(--color-yellow-600);
+  --color-accent-700: var(--color-yellow-700);
+  --color-accent-800: var(--color-yellow-800);
+  --color-accent-900: var(--color-yellow-900);
+  --color-accent-950: var(--color-yellow-950);
 }
 
 @plugin "@iconify/tailwind4";
