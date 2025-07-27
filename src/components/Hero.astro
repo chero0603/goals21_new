@@ -2,44 +2,57 @@
 // Hero component for overseas bank account closure service
 ---
 
-<header itemscope itemtype="https://schema.org/Service">
-  <h1 itemprop="name">海外口座、放置していませんか？</h1>
-  <p itemprop="description">面倒な解約手続きを完全サポート</p>
-  <ul>
-    <li><strong>現地に行かずに、閉じられます！</strong></li>
-    <li>
-      <strong>もちろん口座内の預金はご指定の銀行口座に送金可能！</strong>
-    </li>
-  </ul>
-  <h2>
-    <strong>現地渡航不要！英語力不要！面倒な手続きをプロが完全サポート</strong>
-  </h2>
-  <p>
-    口座凍結・州政府移管・相続手続き…
-    <br />
-    複雑な海外口座の問題を、実績多数の専門チームが解決します。
-  </p>
-  <button type="button" aria-label="無料相談申込み">
-    今すぐ無料相談で解決策を確認する
-  </button>
-  <p><small>24時間メール・フォームで受付中</small></p>
-</header>
-<div>
-  <div></div>
-  <span>もちろん口座内の預金はご指定の銀行口座に送金可能！</span>
-</div>
+<section class="p-6 sm:p-12" itemscope itemtype="https://schema.org/Service">
+  <div
+    class="reveal-from-left relative h-[calc(100vh-3rem)] rounded-2xl bg-[url(../assets/images/hero_sm.jpg)] bg-cover bg-no-repeat sm:h-[calc(100vh-6rem)] sm:bg-[url(../assets/images/hero.jpg)]"
+  >
+    <div
+      class="absolute inset-0 flex items-center justify-center p-6 sm:justify-start sm:pl-12"
+    >
+      <div class="max-w-4xl text-center sm:text-left">
+        <h2
+          class="slide-in-left mb-4 text-3xl/tight font-black text-white opacity-0 sm:text-5xl lg:text-6xl"
+          itemprop="name"
+        >
+          海外口座、<br />放置していませんか？
+        </h2>
+        <h3
+          class="slide-in-left text-sm font-semibold text-white opacity-0 delay-200 sm:text-base lg:text-lg"
+        >
+          <strong>
+            現地渡航不要！英語力不要！面倒な解約手続きをプロが完全サポート
+          </strong>
+        </h3>
+      </div>
+    </div>
+    <ul
+      class="fade-in-up absolute bottom-20 left-6 space-y-2 opacity-0 delay-800 sm:left-12"
+    >
+      <li class="font-bold text-white drop-shadow-lg">
+        <strong>現地に行かずに、閉じられます！</strong>
+      </li>
+      <li class="font-bold text-white drop-shadow-lg">
+        <strong>もちろん口座内の預金はご指定の銀行口座に送金可能！</strong>
+      </li>
+    </ul>
+    <p
+      class="fade-in-up absolute bottom-10 left-6 text-sm text-white opacity-0 drop-shadow-lg delay-1000 sm:left-12"
+    >
+      口座凍結・州政府移管・相続手続き…
+      <br />
+      複雑な海外口座の問題を、実績多数の専門チームが解決します。
+    </p>
 
-<!-- CTA Button -->
-<div>
-  <a href="#contact">
-    <span>無料相談はこちら</span>
-  </a>
-</div>
-
-<!-- Floating info card -->
-<div>
-  <div>実績多数の専門チームが</div>
-  <div>
-    あなたの海外口座を<br />スッキリ解決
+    <!-- Floating info card -->
+    <div
+      class="fade-in-up absolute top-20 right-6 rounded-lg bg-white/90 p-4 opacity-0 shadow-xl backdrop-blur-sm transition-transform delay-600 duration-300 hover:scale-105 sm:top-32 sm:right-20"
+    >
+      <div class="text-sm font-semibold text-blue-600">
+        実績多数の専門チームが
+      </div>
+      <div class="text-lg font-bold text-gray-800">
+        あなたの海外口座を<br />スッキリ解決
+      </div>
+    </div>
   </div>
-</div>
+</section>

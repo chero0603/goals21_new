@@ -1,103 +1,38 @@
 ---
-// Header component for overseas bank account closure service
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo.svg';
 ---
 
-<header>
+<header
+  class="slide-down fixed z-50 flex w-full items-center justify-between p-3 sm:p-6"
+>
+  <!-- Logo -->
   <div>
-    <div>
-      <!-- Logo -->
-      <div>
-        <a href="/">
-          <div>
-            <span>G</span>
-          </div>
-          <span>GOALS21</span>
-        </a>
-      </div>
-
-      <!-- Desktop Navigation (Hidden, using hamburger menu for all) -->
-      <nav>
-        <a href="#service">サービス</a>
-        <a href="#countries">対応国・銀行</a>
-        <a href="#cases">事例</a>
-        <a href="#pricing">料金</a>
-        <a href="#company">会社情報</a>
-        <a href="#recruit">採用情報</a>
-      </nav>
-
-      <!-- CTA Button & Hamburger Menu Button -->
-      <div>
-        <!-- CTA Button -->
-        <a href="#contact">お問い合わせ</a>
-
-        <!-- Hamburger Menu Button (Always visible) -->
-        <button id="mobile-menu-button" aria-label="メニューを開く">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            >
-            </path>
-          </svg>
-        </button>
-      </div>
-    </div>
+    <a href="/" class="flex items-center space-x-2">
+      <Image
+        src={logo}
+        class="h-6 w-auto sm:h-8"
+        alt="海外口座解約手続サポート"
+      />
+      <h1 class="text-primary-600 text-xl font-bold sm:text-3xl">
+        海外口座解約手続サポート
+      </h1>
+    </a>
   </div>
-
-  <!-- Navigation Menu -->
-  <div id="mobile-menu">
-    <div>
-      <div>
-        <a href="#service">サービス</a>
-        <a href="#countries">対応国・銀行</a>
-        <a href="#cases">事例</a>
-        <a href="#pricing">料金</a>
-        <a href="#company">会社情報</a>
-        <a href="#recruit">採用情報</a>
-      </div>
-    </div>
+  <!-- CTA -->
+  <div>
+    <a
+      class="bg-primary-500 hover:bg-primary-400 group flex items-center justify-between gap-7 rounded-full px-4 py-2 font-bold text-white transition-all duration-300 hover:shadow-lg sm:px-6 sm:py-4"
+      href="#contact"
+    >
+      <span
+        class="icon-[mdi--mail] block text-2xl text-white transition-transform duration-300 group-hover:translate-x-1"
+      >
+      </span>
+      <span class="hidden text-center text-sm sm:block sm:text-base/[1]">
+        メールで相談する<br />
+        <small class="text-accent-300 text-xs">相談は無料です</small>
+      </span>
+    </a>
   </div>
 </header>
-
-<script>
-  // Mobile menu toggle functionality
-  document.addEventListener('DOMContentLoaded', function () {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', function () {
-        mobileMenu.classList.toggle('hidden');
-
-        // Update button icon and aria-label
-        const svg = mobileMenuButton.querySelector('svg path');
-        const isOpen = !mobileMenu.classList.contains('hidden');
-
-        if (svg) {
-          if (isOpen) {
-            svg.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X icon
-            mobileMenuButton.setAttribute('aria-label', 'メニューを閉じる');
-          } else {
-            svg.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger icon
-            mobileMenuButton.setAttribute('aria-label', 'メニューを開く');
-          }
-        }
-      });
-
-      // Close mobile menu when clicking on links
-      const mobileLinks = mobileMenu.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', function () {
-          mobileMenu.classList.add('hidden');
-          const svg = mobileMenuButton.querySelector('svg path');
-          if (svg) {
-            svg.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-          }
-          mobileMenuButton.setAttribute('aria-label', 'メニューを開く');
-        });
-      });
-    }
-  });
-</script>

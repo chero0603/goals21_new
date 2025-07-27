@@ -12,21 +12,25 @@
 ## 基本コマンド
 
 ### 開発サーバー
+
 ```bash
 bun run dev
 ```
 
 ### ビルド
+
 ```bash
 bun run build
 ```
 
 ### プレビュー
+
 ```bash
 bun run preview
 ```
 
 ### コードフォーマット
+
 ```bash
 bun run format       # フォーマット実行
 bun run format:check # フォーマットチェック
@@ -63,11 +67,13 @@ src/
 ## 開発ガイドライン
 
 ### コードスタイル
+
 - Prettierを使用してコードフォーマットを統一
 - Astroコンポーネントには prettier-plugin-astro を適用
 - Tailwind CSSには prettier-plugin-tailwindcss を適用
 
 ### コンポーネント開発
+
 - 各セクションは独立したAstroコンポーネントとして実装
 - レスポンシブデザインはTailwind CSSのユーティリティクラスで対応
 - Layout.astroをベースレイアウトとして使用
