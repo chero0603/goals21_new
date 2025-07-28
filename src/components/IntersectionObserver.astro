@@ -1,0 +1,113 @@
+---
+// IntersectionObserver component - slotを使った汎用的な交差監視コンポーネント
+export interface Props {
+  /**
+   * 交差の閾値 (0.0 - 1.0)
+   * @default 0.1
+   */
+  threshold?: number;
+  /**
+   * ルートマージン
+   * @default '0px'
+   */
+  rootMargin?: string;
+  /**
+   * 一度だけ実行するかどうか
+   * @default true
+   */
+  once?: boolean;
+  /**
+   * 追加のクラス名
+   */
+  class?: string;
+  /**
+   * その他のHTML属性
+   */
+  [key: string]: any;
+}
+
+const {
+  threshold = 0.1,
+  rootMargin = '0px',
+  once = true,
+  class: className = '',
+  ...rest
+} = Astro.props;
+---
+
+<div
+  class={`intersection-observer ${className}`}
+  data-threshold={threshold}
+  data-root-margin={rootMargin}
+  data-once={once}
+  {...rest}
+>
+  <slot />
+</div>
+
+<script>
+  // IntersectionObserverを設定
+  function initIntersectionObserver() {
+    const observers = new Map();
+
+    // 各intersection-observer要素を監視
+    document.querySelectorAll('.intersection-observer').forEach(container => {
+      const threshold = parseFloat(
+        container.getAttribute('data-threshold') || '0.1'
+      );
+      const rootMargin = container.getAttribute('data-root-margin') || '0px';
+      const once = container.getAttribute('data-once') === 'true';
+
+      const options = {
+        root: null,
+        rootMargin: rootMargin,
+        threshold: threshold,
+      };
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const element = entry.target;
+
+          if (entry.isIntersecting) {
+            // 要素が画面に入った時
+            element.setAttribute('data-active', 'true');
+
+            // 一度だけ実行する場合は監視を停止
+            if (once) {
+              observer.unobserve(element);
+            }
+          } else {
+            // 要素が画面から出た時（onceがfalseの場合のみ）
+            if (!once) {
+              element.setAttribute('data-active', 'false');
+            }
+          }
+        });
+      }, options);
+
+      // コンテナ自体を監視
+      container.setAttribute('data-active', 'false');
+      observer.observe(container);
+
+      // 子要素も監視対象にする場合
+      container.querySelectorAll('[data-observe]').forEach(child => {
+        child.setAttribute('data-active', 'false');
+        observer.observe(child);
+      });
+
+      observers.set(container, observer);
+    });
+
+    // クリーンアップ関数を返す
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
+  }
+
+  // DOM読み込み完了後に実行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initIntersectionObserver);
+  } else {
+    initIntersectionObserver();
+  }
+</script>
