@@ -12,7 +12,7 @@ import ProblemCard from './ProblemCard.astro';
 >
   <div class="mx-auto max-w-6xl">
     <IntersectionObserver
-      class="data-[observer=true]:animate-fade-in-up opacity-0"
+      class="data-[observer=true]:animate-fade-in-up delay-order-child opacity-0"
     >
       <h2
         id="problems-heading"
@@ -23,12 +23,12 @@ import ProblemCard from './ProblemCard.astro';
     </IntersectionObserver>
 
     <div
-      class="grid items-stretch gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3"
+      class="animate-order-200 grid items-stretch gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3"
       itemscope
       itemtype="https://schema.org/FAQPage"
     >
       <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up opacity-0"
+        class="data-[observer=true]:animate-fade-in-up animate-order-child opacity-0"
       >
         <ProblemCard>
           <Image
@@ -45,7 +45,7 @@ import ProblemCard from './ProblemCard.astro';
       </IntersectionObserver>
 
       <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up opacity-0"
+        class="data-[observer=true]:animate-fade-in-up animate-order-child opacity-0"
       >
         <ProblemCard>
           <Image
@@ -64,7 +64,7 @@ import ProblemCard from './ProblemCard.astro';
       </IntersectionObserver>
 
       <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up opacity-0"
+        class="data-[observer=true]:animate-fade-in-up animate-order-child opacity-0"
       >
         <ProblemCard>
           <Image
@@ -84,7 +84,7 @@ import ProblemCard from './ProblemCard.astro';
       </IntersectionObserver>
 
       <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up opacity-0"
+        class="data-[observer=true]:animate-fade-in-up animate-order-child opacity-0"
       >
         <ProblemCard>
           <Image
@@ -103,7 +103,7 @@ import ProblemCard from './ProblemCard.astro';
       </IntersectionObserver>
 
       <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up opacity-0"
+        class="data-[observer=true]:animate-fade-in-up animate-order-child opacity-0"
       >
         <ProblemCard>
           <Image
@@ -121,7 +121,7 @@ import ProblemCard from './ProblemCard.astro';
     </div>
 
     <IntersectionObserver
-      class="data-[observer=true]:animate-fade-in-up opacity-0"
+      class="data-[observer=true]:animate-fade-in-up animate-order-child opacity-0"
     >
       <div class="mt-12 text-center">
         <h3

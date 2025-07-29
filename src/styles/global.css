@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
+@import "./animations.css";
 
 /* tailwindcssテーマ変数マニュアル:https://tailwindcss.com/docs/theme */
 /* tailwindcss関数とディレクティブマニュアル:https://tailwindcss.com/docs/functions-and-directives */
@@ -102,6 +103,5 @@
   animation-delay: 0s;
 }
 @utility animate-delay-* {
-  animation-delay: --value([*]);
   animation-delay: calc(--value(integer) * 1ms);
 }

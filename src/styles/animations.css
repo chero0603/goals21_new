@@ -1,0 +1,165 @@
+/* アニメーションオフセットクラス */
+@utility animate-offset-none {
+  --animate-offset: 0ms;
+}
+
+@utility animate-offset-* {
+  --animate-offset: calc(--value(integer) * 1ms);
+}
+
+/* アニメーションディレイ順序管理クラス - 簡潔版 */
+@utility animate-order-* {
+  --animate-base-delay: calc(--value(integer) * 1ms);
+
+  & .animate-order-child:nth-child(n) {
+    animation-delay: calc(
+      var(--animate-base-delay) * var(--child-index, 1) +
+        var(--animate-offset, 0ms)
+    );
+  }
+}
+
+/* 子要素インデックス用ユーティリティ（必要に応じて使用） */
+.animate-order-child:nth-child(1) {
+  --child-index: 1;
+}
+.animate-order-child:nth-child(2) {
+  --child-index: 2;
+}
+.animate-order-child:nth-child(3) {
+  --child-index: 3;
+}
+.animate-order-child:nth-child(4) {
+  --child-index: 4;
+}
+.animate-order-child:nth-child(5) {
+  --child-index: 5;
+}
+.animate-order-child:nth-child(6) {
+  --child-index: 6;
+}
+.animate-order-child:nth-child(7) {
+  --child-index: 7;
+}
+.animate-order-child:nth-child(8) {
+  --child-index: 8;
+}
+.animate-order-child:nth-child(9) {
+  --child-index: 9;
+}
+.animate-order-child:nth-child(10) {
+  --child-index: 10;
+}
+.animate-order-child:nth-child(11) {
+  --child-index: 11;
+}
+.animate-order-child:nth-child(12) {
+  --child-index: 12;
+}
+.animate-order-child:nth-child(13) {
+  --child-index: 13;
+}
+.animate-order-child:nth-child(14) {
+  --child-index: 14;
+}
+.animate-order-child:nth-child(15) {
+  --child-index: 15;
+}
+.animate-order-child:nth-child(16) {
+  --child-index: 16;
+}
+.animate-order-child:nth-child(17) {
+  --child-index: 17;
+}
+.animate-order-child:nth-child(18) {
+  --child-index: 18;
+}
+.animate-order-child:nth-child(19) {
+  --child-index: 19;
+}
+.animate-order-child:nth-child(20) {
+  --child-index: 20;
+}
+
+/* トランジションオフセットクラス */
+@utility transition-offset-none {
+  --transition-offset: 0ms;
+}
+
+@utility transition-offset-* {
+  --transition-offset: calc(--value(integer) * 1ms);
+}
+
+/* トランジションディレイ順序管理クラス - 簡潔版 */
+@utility transition-order-* {
+  --transition-base-delay: calc(--value(integer) * 1ms);
+
+  & .transition-order-child:nth-child(n) {
+    transition-delay: calc(
+      var(--transition-base-delay) * var(--child-index, 1) +
+        var(--transition-offset, 0ms)
+    );
+  }
+}
+
+/* 子要素インデックス用ユーティリティ（必要に応じて使用） */
+.transition-order-child:nth-child(1) {
+  --child-index: 1;
+}
+.transition-order-child:nth-child(2) {
+  --child-index: 2;
+}
+.transition-order-child:nth-child(3) {
+  --child-index: 3;
+}
+.transition-order-child:nth-child(4) {
+  --child-index: 4;
+}
+.transition-order-child:nth-child(5) {
+  --child-index: 5;
+}
+.transition-order-child:nth-child(6) {
+  --child-index: 6;
+}
+.transition-order-child:nth-child(7) {
+  --child-index: 7;
+}
+.transition-order-child:nth-child(8) {
+  --child-index: 8;
+}
+.transition-order-child:nth-child(9) {
+  --child-index: 9;
+}
+.transition-order-child:nth-child(10) {
+  --child-index: 10;
+}
+.transition-order-child:nth-child(11) {
+  --child-index: 11;
+}
+.transition-order-child:nth-child(12) {
+  --child-index: 12;
+}
+.transition-order-child:nth-child(13) {
+  --child-index: 13;
+}
+.transition-order-child:nth-child(14) {
+  --child-index: 14;
+}
+.transition-order-child:nth-child(15) {
+  --child-index: 15;
+}
+.transition-order-child:nth-child(16) {
+  --child-index: 16;
+}
+.transition-order-child:nth-child(17) {
+  --child-index: 17;
+}
+.transition-order-child:nth-child(18) {
+  --child-index: 18;
+}
+.transition-order-child:nth-child(19) {
+  --child-index: 19;
+}
+.transition-order-child:nth-child(20) {
+  --child-index: 20;
+}
