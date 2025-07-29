@@ -3,6 +3,7 @@
 import { Image } from 'astro:assets';
 import dummyImage from '../assets/images/dummy980x551.png';
 import IntersectionObserver from './IntersectionObserver.astro';
+import ProblemCard from './ProblemCard.astro';
 ---
 
 <section
@@ -11,7 +12,7 @@ import IntersectionObserver from './IntersectionObserver.astro';
 >
   <div class="mx-auto max-w-6xl">
     <IntersectionObserver
-      class="translate-y-8 opacity-0 transition-all duration-700 ease-out data-[active=true]:translate-y-0 data-[active=true]:opacity-100"
+      class="data-[observer=true]:animate-fade-in-up opacity-0"
     >
       <h2
         id="problems-heading"
@@ -27,214 +28,107 @@ import IntersectionObserver from './IntersectionObserver.astro';
       itemtype="https://schema.org/FAQPage"
     >
       <IntersectionObserver
-        class="opacity-0 transition-all duration-600 ease-out data-[active=true]:opacity-100"
+        class="data-[observer=true]:animate-fade-in-up opacity-0"
       >
-        <article
-          class="h-full overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
-          itemprop="mainEntity"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
+        <ProblemCard>
           <Image
+            slot="image"
             src={dummyImage}
             alt="海外赴任中に開設した口座を放置"
             class="aspect-video w-full object-cover"
             loading="lazy"
             format="webp"
           />
-          <div class="p-6">
-            <h3
-              class="from-primary-600 to-primary-800 mb-3 bg-gradient-to-r bg-clip-text text-lg font-bold text-transparent sm:text-xl"
-              itemprop="name"
-            >
-              海外赴任中に開設した口座を放置
-            </h3>
-            <div
-              itemprop="acceptedAnswer"
-              itemscope
-              itemtype="https://schema.org/Answer"
-            >
-              <p
-                class="text-sm leading-relaxed text-gray-700 sm:text-base"
-                itemprop="text"
-              >
-                帰国後に口座が凍結されていた。解約手続きが分からない。
-              </p>
-            </div>
-          </div>
-        </article>
+          <Fragment slot="title">海外赴任中に開設した口座を放置</Fragment>
+          <p>帰国後に口座が凍結されていた。解約手続きが分からない。</p>
+        </ProblemCard>
       </IntersectionObserver>
 
       <IntersectionObserver
-        class="group -translate-x-8 opacity-0 transition-all duration-700 ease-out data-[active=true]:translate-x-0 data-[active=true]:opacity-100"
+        class="data-[observer=true]:animate-fade-in-up opacity-0"
       >
-        <article
-          class="h-full overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
-          itemprop="mainEntity"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
+        <ProblemCard>
           <Image
+            slot="image"
             src={dummyImage}
             alt="海外口座の自動解約と州政府移管"
             class="aspect-video w-full object-cover"
             loading="lazy"
             format="webp"
           />
-          <div class="p-6">
-            <h3
-              class="from-primary-600 to-primary-800 mb-3 bg-gradient-to-r bg-clip-text text-lg font-bold text-transparent sm:text-xl"
-              itemprop="name"
-            >
-              海外口座の自動解約と州政府移管
-            </h3>
-            <div
-              itemprop="acceptedAnswer"
-              itemscope
-              itemtype="https://schema.org/Answer"
-            >
-              <p
-                class="text-sm leading-relaxed text-gray-700 sm:text-base"
-                itemprop="text"
-              >
-                放置していた口座が自動解約され、預金が州政府に移管されてしまった。
-              </p>
-              <p class="hidden group-data-[active=true]:block">
-                あああああああああああ
-              </p>
-            </div>
-          </div>
-        </article>
+          <Fragment slot="title">海外口座の自動解約と州政府移管</Fragment>
+          <p>
+            放置していた口座が自動解約され、預金が州政府に移管されてしまった。
+          </p>
+        </ProblemCard>
       </IntersectionObserver>
 
       <IntersectionObserver
-        class="translate-x-8 opacity-0 transition-all duration-700 ease-out data-[active=true]:translate-x-0 data-[active=true]:opacity-100"
+        class="data-[observer=true]:animate-fade-in-up opacity-0"
       >
-        <article
-          class="h-full overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
-          itemprop="mainEntity"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
+        <ProblemCard>
           <Image
+            slot="image"
             src={dummyImage}
             alt="香港・シンガポールの口座放置"
             class="aspect-video w-full object-cover"
             loading="lazy"
             format="webp"
           />
-          <div class="p-6">
-            <h3
-              class="from-primary-600 to-primary-800 mb-3 bg-gradient-to-r bg-clip-text text-lg font-bold text-transparent sm:text-xl"
-              itemprop="name"
-            >
-              香港・シンガポールの口座放置
-            </h3>
-            <div
-              itemprop="acceptedAnswer"
-              itemscope
-              itemtype="https://schema.org/Answer"
-            >
-              <p
-                class="text-sm leading-relaxed text-gray-700 sm:text-base"
-                itemprop="text"
-              >
-                HSBCやStandard Chartered
-                Bankに開設した口座を活用できず放置している。
-              </p>
-            </div>
-          </div>
-        </article>
+          <Fragment slot="title">香港・シンガポールの口座放置</Fragment>
+          <p>
+            HSBCやStandard Chartered
+            Bankに開設した口座を活用できず放置している。
+          </p>
+        </ProblemCard>
       </IntersectionObserver>
 
       <IntersectionObserver
-        class="scale-95 opacity-0 transition-all duration-700 ease-out data-[active=true]:scale-100 data-[active=true]:opacity-100"
+        class="data-[observer=true]:animate-fade-in-up opacity-0"
       >
-        <article
-          class="h-full overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
-          itemprop="mainEntity"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
+        <ProblemCard>
           <Image
+            slot="image"
             src={dummyImage}
             alt="特定目的で開設した海外口座"
             class="aspect-video w-full object-cover"
             loading="lazy"
             format="webp"
           />
-          <div class="p-6">
-            <h3
-              class="from-primary-600 to-primary-800 mb-3 bg-gradient-to-r bg-clip-text text-lg font-bold text-transparent sm:text-xl"
-              itemprop="name"
-            >
-              特定目的で開設した海外口座
-            </h3>
-            <div
-              itemprop="acceptedAnswer"
-              itemscope
-              itemtype="https://schema.org/Answer"
-            >
-              <p
-                class="text-sm leading-relaxed text-gray-700 sm:text-base"
-                itemprop="text"
-              >
-                インドネシアでバリのホテル会員権のために作った口座が放置されたままになっている。
-              </p>
-            </div>
-          </div>
-        </article>
+          <Fragment slot="title">特定目的で開設した海外口座</Fragment>
+          <p>
+            インドネシアでバリのホテル会員権のために作った口座が放置されたままになっている。
+          </p>
+        </ProblemCard>
       </IntersectionObserver>
 
       <IntersectionObserver
-        class="translate-y-8 opacity-0 transition-all duration-700 ease-out data-[active=true]:translate-y-0 data-[active=true]:opacity-100"
+        class="data-[observer=true]:animate-fade-in-up opacity-0"
       >
-        <article
-          class="h-full overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
-          itemprop="mainEntity"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
+        <ProblemCard>
           <Image
+            slot="image"
             src={dummyImage}
             alt="相続で発覚した海外口座"
             class="aspect-video w-full object-cover"
             loading="lazy"
             format="webp"
           />
-          <div class="p-6">
-            <h3
-              class="from-primary-600 to-primary-800 mb-3 bg-gradient-to-r bg-clip-text text-lg font-bold text-transparent sm:text-xl"
-              itemprop="name"
-            >
-              相続で発覚した海外口座
-            </h3>
-            <div
-              itemprop="acceptedAnswer"
-              itemscope
-              itemtype="https://schema.org/Answer"
-            >
-              <p
-                class="text-sm leading-relaxed text-gray-700 sm:text-base"
-                itemprop="text"
-              >
-                亡くなった親族が海外口座を持っていたことが判明した。
-              </p>
-            </div>
-          </div>
-        </article>
+          <Fragment slot="title">相続で発覚した海外口座</Fragment>
+          <p>亡くなった親族が海外口座を持っていたことが判明した。</p>
+        </ProblemCard>
       </IntersectionObserver>
     </div>
 
     <IntersectionObserver
-      class="mt-12 translate-y-8 text-center opacity-0 transition-all duration-700 ease-out data-[active=true]:translate-y-0 data-[active=true]:opacity-100"
+      class="data-[observer=true]:animate-fade-in-up opacity-0"
     >
-      <div>
-        <p
-          class="from-primary-600 to-primary-800 bg-gradient-to-r bg-clip-text text-lg font-semibold text-transparent sm:text-xl"
+      <div class="mt-12 text-center">
+        <h3
+          class="from-primary-600 to-primary-800 bg-gradient-to-r bg-clip-text text-lg font-black text-transparent sm:text-2xl"
         >
           ひとつでも当てはまる方は、今すぐご相談ください
-        </p>
+        </h3>
         <p class="mt-2 text-sm text-gray-600 sm:text-base">
           放置すればするほど、解決が困難になります
         </p>

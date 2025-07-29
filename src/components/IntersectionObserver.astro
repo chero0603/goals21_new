@@ -70,7 +70,7 @@ const {
 
           if (entry.isIntersecting) {
             // 要素が画面に入った時
-            element.setAttribute('data-active', 'true');
+            element.setAttribute('data-observer', 'true');
 
             // 一度だけ実行する場合は監視を停止
             if (once) {
@@ -79,19 +79,19 @@ const {
           } else {
             // 要素が画面から出た時（onceがfalseの場合のみ）
             if (!once) {
-              element.setAttribute('data-active', 'false');
+              element.setAttribute('data-observer', 'false');
             }
           }
         });
       }, options);
 
       // コンテナ自体を監視
-      container.setAttribute('data-active', 'false');
+      container.setAttribute('data-observer', 'false');
       observer.observe(container);
 
       // 子要素も監視対象にする場合
       container.querySelectorAll('[data-observe]').forEach(child => {
-        child.setAttribute('data-active', 'false');
+        child.setAttribute('data-observer', 'false');
         observer.observe(child);
       });
 
