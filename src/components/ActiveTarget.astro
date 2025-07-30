@@ -1,0 +1,27 @@
+---
+// ActiveTarget component - data-active状態管理のみを行うシンプルなコンポーネント
+export interface Props {
+  /**
+   * 初期のアクティブ状態
+   * @default false
+   */
+  active?: boolean;
+  /**
+   * 追加のクラス名
+   */
+  class?: string;
+  /**
+   * その他のHTML属性
+   */
+  [key: string]: any;
+}
+
+const { active, class: className = '', ...rest } = Astro.props;
+---
+
+<!-- 管理対象要素のみ（slot内はdata-activeの影響を受ける要素） -->
+<div class={`active-target ${className}`} data-active={active} {...rest}>
+  <slot />
+</div>
+
+<script></script>
