@@ -12,10 +12,10 @@ export interface Props {
    */
   rootMargin?: string;
   /**
-   * 一度だけ実行するかどうか
-   * @default true
+   * 繰り返し実行するかどうか
+   * @default false
    */
-  once?: boolean;
+  repeat?: boolean;
   /**
    * 追加のクラス名
    */
@@ -29,7 +29,7 @@ export interface Props {
 const {
   threshold = 0.1,
   rootMargin = '0px',
-  once = true,
+  repeat = false,
   class: className = '',
   ...rest
 } = Astro.props;
@@ -39,7 +39,7 @@ const {
   class={`intersection-observer ${className}`}
   data-threshold={threshold}
   data-root-margin={rootMargin}
-  data-once={once}
+  data-repeat={repeat}
   {...rest}
 >
   <slot />
@@ -56,7 +56,7 @@ const {
         container.getAttribute('data-threshold') || '0.1'
       );
       const rootMargin = container.getAttribute('data-root-margin') || '0px';
-      const once = container.getAttribute('data-once') === 'true';
+      const repeat = container.getAttribute('data-repeat') === 'true';
 
       const options = {
         root: null,
@@ -73,12 +73,12 @@ const {
             element.setAttribute('data-observer', 'true');
 
             // 一度だけ実行する場合は監視を停止
-            if (once) {
+            if (!repeat) {
               observer.unobserve(element);
             }
           } else {
-            // 要素が画面から出た時（onceがfalseの場合のみ）
-            if (!once) {
+            // 要素が画面から出た時（repeatがtrueの場合のみ）
+            if (repeat) {
               element.setAttribute('data-observer', 'false');
             }
           }
