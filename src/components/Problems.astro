@@ -1,9 +1,9 @@
 ---
 // Problems section component
+import dummyImage from '@/assets/images/dummy980x551.png';
+import IntersectionObserver from '@/components/IntersectionObserver.astro';
+import ProblemCard from '@/components/ProblemCard.astro';
 import { Image } from 'astro:assets';
-import dummyImage from '../assets/images/dummy980x551.png';
-import IntersectionObserver from './IntersectionObserver.astro';
-import ProblemCard from './ProblemCard.astro';
 ---
 
 <section
@@ -30,7 +30,7 @@ import ProblemCard from './ProblemCard.astro';
       <IntersectionObserver
         class="data-[observer=true]:animate-fade-in-up animate-order-child opacity-0"
       >
-        <ProblemCard>
+        <ProblemCard class="bg-red-500">
           <Image
             slot="image"
             src={dummyImage}

@@ -1,9 +1,19 @@
 ---
 // Problem card component
+import { cn } from '@/utils/cn';
+
+interface Props {
+  class?: string;
+}
+
+const { class: additionalClass = '' } = Astro.props;
 ---
 
 <article
-  class="h-full overflow-hidden rounded-2xl bg-white shadow duration-300 hover:shadow-lg"
+  class={cn(
+    'h-full overflow-hidden rounded-2xl bg-white shadow duration-300 hover:shadow-lg',
+    additionalClass
+  )}
   itemprop="mainEntity"
   itemscope
   itemtype="https://schema.org/Question"
