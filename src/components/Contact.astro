@@ -1,41 +1,374 @@
 ---
-// Contact section component
+import { actions } from 'astro:actions';
+
+const result = Astro.getActionResult(actions.sendContactForm);
+console.log('Contact action result:', result);
 ---
 
 <section
-  aria-labelledby="consultation-heading"
+  id="contact"
+  aria-labelledby="contact-heading"
   itemscope
   itemtype="https://schema.org/ContactPoint"
+  class="bg-gradient-to-br from-slate-50 to-white py-16"
 >
-  <h2 id="consultation-heading">今すぐ無料相談！</h2>
-  <p>ご状況をお知らせください。最適な方法をご提案いたします。</p>
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mb-12 text-center">
+      <h2 id="contact-heading" class="mb-4 text-4xl font-bold text-slate-800">
+        今すぐ無料相談！
+      </h2>
+      <p class="mx-auto max-w-2xl text-lg text-slate-600">
+        ご状況をお知らせください。最適な方法をご提案いたします。
+      </p>
+    </div>
 
-  <button type="button" aria-label="無料相談申込み">
-    今すぐ無料相談を申し込む
-  </button>
+    <div class="grid gap-8 lg:grid-cols-3">
+      <div class="lg:col-span-1">
+        <h3 class="mb-6 text-xl font-semibold text-slate-800">
+          お問い合わせ方法
+        </h3>
+        <div class="mb-8 space-y-4">
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
+          >
+            <strong class="mb-2 block text-slate-800">
+              メールでのお問い合わせ:
+            </strong>
+            <a
+              href="mailto:support@gold-t.tokyo"
+              itemprop="email"
+              class="font-medium text-blue-600 hover:text-blue-700"
+            >
+              support@gold-t.tokyo
+            </a>
+          </div>
+          <div
+            class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
+          >
+            <strong class="mb-2 block text-slate-800">
+              お電話でのお問い合わせ:
+            </strong>
+            <span itemprop="telephone" class="font-medium text-slate-700">
+              03-1234-5678
+            </span>
+            <small class="mt-1 block text-slate-500">（平日 9:00-18:00）</small>
+          </div>
+        </div>
 
-  <address>
-    <p><strong>2つの相談方法をご用意</strong></p>
-    <p>
-      <strong>メールでのお問い合わせ:</strong>
-      <a href="mailto:support@gold-t.tokyo" itemprop="email">
-        support@gold-t.tokyo
-      </a>
-      <br />
-      <strong>無料相談フォーム:</strong>
-      <a href="https://gold-t.tokyo/?page_id=76" itemprop="url">
-        無料相談フォームはこちら
-      </a>
-    </p>
-  </address>
+        <div class="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-6">
+          <p class="mb-2 font-semibold text-slate-800">
+            面倒な海外口座、私たちにお任せください。
+          </p>
+          <p class="font-semibold text-slate-800">
+            帰国後の不安、不信、不満をスッキリ解決します。
+          </p>
+        </div>
+      </div>
 
-  <p><strong>面倒な海外口座、私たちにお任せください。</strong></p>
-  <p><strong>帰国後の不安、不信、不満をスッキリ解決します。</strong></p>
+      <div class="lg:col-span-2">
+        <h3 class="mb-6 text-xl font-semibold text-slate-800">
+          お問い合わせフォーム
+        </h3>
 
-  <footer>
-    <p>
-      運営:
-      <a href="https://gold-t.tokyo/" itemprop="url">海外銀行お助けネット</a>
-    </p>
-  </footer>
+        {
+          result?.data && (
+            <div
+              role="alert"
+              class="mb-6 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-green-800"
+            >
+              <p class="font-medium">{result.data.message}</p>
+            </div>
+          )
+        }
+
+        {
+          result?.error && (
+            <div
+              role="alert"
+              class="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-red-800"
+            >
+              <p class="font-medium">
+                送信に失敗しました。以下の内容をご確認ください：
+              </p>
+              {result.error.message && (
+                <p class="mt-2">{result.error.message}</p>
+              )}
+            </div>
+          )
+        }
+
+        <form
+          method="POST"
+          action={actions.sendContactForm + '#contact-form'}
+          id="contact-form"
+          class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm"
+        >
+          <div class="mb-6 grid gap-6 md:grid-cols-2">
+            <div>
+              <label
+                for="name"
+                class="mb-2 block text-sm font-semibold text-slate-700"
+              >
+                お名前 <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                aria-describedby="name-error"
+                class="w-full rounded-md border border-slate-300 px-3 py-2 transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="mb-2 block text-sm font-semibold text-slate-700"
+              >
+                メールアドレス <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-describedby="email-error"
+                class="w-full rounded-md border border-slate-300 px-3 py-2 transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <div class="mb-6 grid gap-6 md:grid-cols-2">
+            <div>
+              <label
+                for="phone"
+                class="mb-2 block text-sm font-semibold text-slate-700"
+              >
+                電話番号（任意）
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="03-1234-5678"
+                class="w-full rounded-md border border-slate-300 px-3 py-2 transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label
+                for="inquiry_type"
+                class="mb-2 block text-sm font-semibold text-slate-700"
+              >
+                お問い合わせ種別 <span class="text-red-500">*</span>
+              </label>
+              <select
+                id="inquiry_type"
+                name="inquiry_type"
+                required
+                class="w-full rounded-md border border-slate-300 px-3 py-2 transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              >
+                <option value="">選択してください</option>
+                <option value="general">一般的なお問い合わせ</option>
+                <option value="account_closure">海外口座解約について</option>
+                <option value="procedures">手続きについて</option>
+                <option value="consultation">無料相談を希望</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label
+              for="subject"
+              class="mb-2 block text-sm font-semibold text-slate-700"
+            >
+              件名 <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              placeholder="お問い合わせ内容の件名をご入力ください"
+              class="w-full rounded-md border border-slate-300 px-3 py-2 transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+
+          <div class="mb-6">
+            <label
+              for="message"
+              class="mb-2 block text-sm font-semibold text-slate-700"
+            >
+              お問い合わせ内容 <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              placeholder="お困りの内容やご質問を詳しくお聞かせください（10文字以上）"
+              class="min-h-[120px] w-full resize-y rounded-md border border-slate-300 px-3 py-2 transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            >
+            </textarea>
+          </div>
+
+          <div class="mb-6 rounded-md border border-slate-200 bg-slate-50 p-4">
+            <p class="text-sm text-slate-600">
+              ※
+              いただいた個人情報は、お問い合わせへの回答およびサービス向上のためにのみ使用いたします。
+              第三者への提供は行いません。
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            class="transform rounded-md bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-3 font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:from-blue-700 hover:to-blue-800 hover:shadow-lg focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+          >
+            お問い合わせを送信
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="mt-12 border-t border-slate-200 pt-8 text-center">
+      <p class="text-slate-600">
+        運営:
+        <a
+          href="https://gold-t.tokyo/"
+          itemprop="url"
+          class="ml-1 font-medium text-blue-600 hover:text-blue-700"
+        >
+          海外銀行お助けネット
+        </a>
+      </p>
+    </footer>
+  </div>
 </section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    const STORAGE_KEY = 'contact_form_data';
+
+    // フォーム要素を取得
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
+    const inquiryTypeSelect = document.getElementById('inquiry_type');
+
+    const formElements = [
+      nameInput,
+      emailInput,
+      phoneInput,
+      subjectInput,
+      messageInput,
+      inquiryTypeSelect,
+    ];
+
+    // ページロード時にフォーム位置にスクロール（送信後の場合）
+    function scrollToForm() {
+      // URLにハッシュが含まれている場合、または成功/エラーメッセージがある場合
+      const hasFormHash = window.location.hash === '#contact-form';
+      const hasMessage = document.querySelector('[role="alert"]');
+
+      if (hasFormHash || hasMessage) {
+        setTimeout(function () {
+          form.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        }, 100);
+      }
+    }
+
+    // ページロード時に保存された値を復元
+    function restoreFormData() {
+      try {
+        const savedData = localStorage.getItem(STORAGE_KEY);
+        if (savedData) {
+          const data = JSON.parse(savedData);
+
+          if (nameInput && data.name) nameInput.value = data.name;
+          if (emailInput && data.email) emailInput.value = data.email;
+          if (phoneInput && data.phone) phoneInput.value = data.phone;
+          if (subjectInput && data.subject) subjectInput.value = data.subject;
+          if (messageInput && data.message) messageInput.value = data.message;
+          if (inquiryTypeSelect && data.inquiry_type)
+            inquiryTypeSelect.value = data.inquiry_type;
+        }
+      } catch (error) {
+        console.error('Failed to restore form data:', error);
+      }
+    }
+
+    // フォームデータを保存
+    function saveFormData() {
+      try {
+        const data = {
+          name: nameInput ? nameInput.value : '',
+          email: emailInput ? emailInput.value : '',
+          phone: phoneInput ? phoneInput.value : '',
+          subject: subjectInput ? subjectInput.value : '',
+          message: messageInput ? messageInput.value : '',
+          inquiry_type: inquiryTypeSelect ? inquiryTypeSelect.value : '',
+        };
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (error) {
+        console.error('Failed to save form data:', error);
+      }
+    }
+
+    // フォームデータをクリア
+    function clearFormData() {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (error) {
+        console.error('Failed to clear form data:', error);
+      }
+    }
+
+    // 各入力要素に変更イベントを追加
+    formElements.forEach(function (element) {
+      if (element) {
+        element.addEventListener('input', saveFormData);
+        element.addEventListener('change', saveFormData);
+      }
+    });
+
+    // フォーム送信時の処理
+    form.addEventListener('submit', function (event) {
+      // 送信ボタンを無効化してダブルサブミットを防ぐ
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = '送信中...';
+      }
+
+      // データを保存（エラー時の復元用）
+      saveFormData();
+    });
+
+    // 成功時にフォームデータをクリア
+    const successMessage = document.querySelector('[role="alert"]');
+    if (successMessage && successMessage.textContent.includes('ありがとう')) {
+      clearFormData();
+      // フォームをリセット
+      form.reset();
+    } else {
+      // エラーまたは初回表示時は保存されたデータを復元
+      restoreFormData();
+    }
+
+    // ページ離脱時にデータを保存
+    window.addEventListener('beforeunload', saveFormData);
+
+    // 初期化時にスクロール処理を実行
+    scrollToForm();
+  });
+</script>
