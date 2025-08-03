@@ -7,7 +7,7 @@ interface Props {
   animationDelay?: string;
 }
 
-const { imageSrc, title, description, animationDelay = "0s" } = Astro.props;
+const { imageSrc, title, description, animationDelay = '0s' } = Astro.props;
 ---
 
 <article
@@ -20,8 +20,10 @@ const { imageSrc, title, description, animationDelay = "0s" } = Astro.props;
   <div class="relative flex h-full flex-col">
     <div class="flex-1"></div>
     <div class="p-4">
-      <h3 class="mb-2 text-sm font-bold text-white sm:text-base" set:html={title}>
-      </h3>
+      <h3
+        class="mb-2 text-sm font-bold text-white sm:text-base"
+        set:html={title}
+      />
       <p class="text-xs leading-relaxed text-gray-200 sm:text-sm">
         {description}
       </p>
