@@ -1,35 +1,53 @@
 ---
 // Service Details section component
+import IntersectionObserver from '@/components/IntersectionObserver.astro';
+import SupportList from '@/components/SupportList.astro';
 ---
 
-<section aria-labelledby="service-details-heading">
-  <h2 id="service-details-heading">なぜ私たちなら確実に解決できるのか</h2>
-  <article>
-    <h3>1. 世界30カ国以上・主要銀行すべてに対応する専門ノウハウ</h3>
-    <p>
-      各国の銀行規定、必要書類、手続きフローを完全把握。現地の法律や最新の規制変更にも即座に対応します。
-    </p>
-  </article>
+<section
+  aria-labelledby="service-details-heading"
+  class="from-primary-50 to-primary-200 relative overflow-hidden bg-gradient-to-br p-6 pb-12 sm:p-12 sm:pb-16"
+  itemscope
+  itemtype="https://schema.org/Service"
+>
+  <div class="relative mx-auto max-w-6xl">
+    <IntersectionObserver
+      class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+    >
+      <div class="mb-8 text-center sm:mb-12">
+        <h2
+          id="service-details-heading"
+          class="text-primary-900 mb-4 text-2xl font-bold sm:text-4xl lg:text-5xl"
+        >
+          なぜ私たちなら確実に解決できるのか
+        </h2>
+        <p class="text-primary-700 text-sm sm:text-lg">
+          世界30カ国以上・主要銀行すべてに対応する専門ノウハウと実績豊富なチームによる包括的なサポート体制
+        </p>
+      </div>
+    </IntersectionObserver>
 
-  <article>
-    <h3>2. 専門チームによる包括的サポート</h3>
-    <dl>
-      <dt><strong>口座解約リクエストレターの作成・翻訳</strong></dt>
-      <dd>銀行規定に適合した正式な解約依頼書を作成し、英語に翻訳します</dd>
-      <dt><strong>委任状（Power of Attorney）の作成</strong></dt>
-      <dd>現地での手続きに必要な委任状を適切に準備します</dd>
-      <dt><strong>現地銀行への問い合わせ代行（※要条件）</strong></dt>
-      <dd>条件に応じて、銀行との直接交渉を代行します</dd>
-      <dt><strong>身分証明書や住所証明書の英訳</strong></dt>
-      <dd>必要な書類の正確な英語翻訳を提供します</dd>
-      <dt><strong>資金の送金サポート（受取先口座への移動）</strong></dt>
-      <dd>ご指定の日本の銀行口座への確実な資金移動をサポートします</dd>
-      <dt><strong>インターネットバンキングの復旧</strong></dt>
-      <dd>凍結されたオンラインアクセスの回復をお手伝いします</dd>
-      <dt><strong>カードの再発行</strong></dt>
-      <dd>必要に応じてデビット・クレジットカードの再発行も対応します</dd>
-      <dt><strong>面談時の通訳</strong></dt>
-      <dd>現地での面談が必要な場合は通訳サービスも提供します</dd>
-    </dl>
-  </article>
+    <div
+      class="animate-order-200 grid items-stretch gap-6 sm:gap-8 md:grid-cols-1"
+    >
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+      >
+        <article
+          class="flex flex-col rounded-2xl bg-white/90 p-6 shadow-lg transition-shadow hover:shadow-xl sm:p-8"
+        >
+          <h3
+            class="text-primary-700 mb-6 text-center text-xl font-bold sm:text-2xl"
+          >
+            <span
+              class="icon-[mdi--account-group] text-primary-500 mr-2 align-middle text-3xl"
+            >
+            </span>
+            専門チームによる包括的サポート
+          </h3>
+          <SupportList />
+        </article>
+      </IntersectionObserver>
+    </div>
+  </div>
 </section>

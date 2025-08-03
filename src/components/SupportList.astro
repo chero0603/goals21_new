@@ -1,0 +1,64 @@
+---
+// サポート内容リストの再利用コンポーネント
+const items = [
+  {
+    icon: 'mdi--file-document-edit',
+    title: '口座解約リクエストレターの作成・翻訳',
+    desc: '銀行規定に適合した正式な解約依頼書を作成し、英語に翻訳します',
+  },
+  {
+    icon: 'mdi--file-sign',
+    title: '委任状（Power of Attorney）の作成',
+    desc: '現地での手続きに必要な委任状を適切に準備します',
+  },
+  {
+    icon: 'mdi--bank',
+    title: '現地銀行への問い合わせ代行（※要条件）',
+    desc: '条件に応じて、銀行との直接交渉を代行します',
+  },
+  {
+    icon: 'mdi--card-account-details',
+    title: '身分証明書や住所証明書の英訳',
+    desc: '必要な書類の正確な英語翻訳を提供します',
+  },
+  {
+    icon: 'mdi--bank-transfer',
+    title: '資金の送金サポート（受取先口座への移動）',
+    desc: 'ご指定の日本の銀行口座への確実な資金移動をサポートします',
+  },
+  {
+    icon: 'mdi--web',
+    title: 'インターネットバンキングの復旧',
+    desc: '凍結されたオンラインアクセスの回復をお手伝いします',
+  },
+  {
+    icon: 'mdi--credit-card-refresh',
+    title: 'カードの再発行',
+    desc: '必要に応じてデビット・クレジットカードの再発行も対応します',
+  },
+  {
+    icon: 'mdi--account-voice',
+    title: '面談時の通訳',
+    desc: '現地での面談が必要な場合は通訳サービスも提供します',
+  },
+];
+---
+
+<ul class="text-primary-800 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+  {
+    items.map(item => (
+      <li class="flex items-start gap-3">
+        <span
+          class={`icon-[${item.icon}] text-primary-400 mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center text-xl`}
+        />
+        <div>
+          <>
+            <span class="font-semibold">{item.title}</span>
+            <br />
+          </>
+          <span class="text-sm">{item.desc}</span>
+        </div>
+      </li>
+    ))
+  }
+</ul>
