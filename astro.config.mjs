@@ -7,13 +7,13 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   integrations: [
     icon({
-      iconDir: "src/assets/icons",
+      iconDir: 'src/assets/icons',
       include: {
-        mdi: ["*"],
-        "mdi-light": ["*"],
-        "flag": ["*"],
-        "emojione": ["*"],
-        "twemoji": ["*"],
+        mdi: ['*'],
+        'mdi-light': ['*'],
+        flag: ['*'],
+        emojione: ['*'],
+        twemoji: ['*'],
       },
     }),
   ],
