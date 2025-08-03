@@ -5,7 +5,15 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon()],
+  integrations: [
+    icon({
+      iconDir: "src/assets/icons",
+      include: {
+        mdi: ["*"],
+        "mdi-light": ["*"],
+      },
+    }),
+  ],
   base: '/goals21/',
   server: {
     host: '0.0.0.0',

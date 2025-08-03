@@ -48,15 +48,21 @@ const {
 <script>
   // IntersectionObserverを設定
   function initIntersectionObserver() {
+    console.log('Initializing IntersectionObserver...');
     const observers = new Map();
 
     // 各intersection-observer要素を監視
-    document.querySelectorAll('.intersection-observer').forEach(container => {
+    const containers = document.querySelectorAll('.intersection-observer');
+    console.log('Found containers:', containers.length);
+    
+    containers.forEach(container => {
       const threshold = parseFloat(
         container.getAttribute('data-threshold') || '0.1'
       );
       const rootMargin = container.getAttribute('data-root-margin') || '0px';
       const repeat = container.getAttribute('data-repeat') === 'true';
+
+      console.log('Setting up observer for:', container, {threshold, rootMargin, repeat});
 
       const options = {
         root: null,
@@ -67,10 +73,12 @@ const {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           const element = entry.target;
+          console.log('Intersection entry:', entry.isIntersecting, element);
 
           if (entry.isIntersecting) {
             // 要素が画面に入った時
             element.setAttribute('data-observer', 'true');
+            console.log('Element entered view:', element);
 
             // 一度だけ実行する場合は監視を停止
             if (!repeat) {
@@ -80,6 +88,7 @@ const {
             // 要素が画面から出た時（repeatがtrueの場合のみ）
             if (repeat) {
               element.setAttribute('data-observer', 'false');
+              console.log('Element left view:', element);
             }
           }
         });
@@ -88,6 +97,7 @@ const {
       // コンテナ自体を監視
       container.setAttribute('data-observer', 'false');
       observer.observe(container);
+      console.log('Started observing:', container);
 
       // 子要素も監視対象にする場合
       container.querySelectorAll('[data-observe]').forEach(child => {

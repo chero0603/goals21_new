@@ -2,6 +2,7 @@
 // Difficulties section component
 import DifficultyCard from '@/components/DifficultyCard.astro';
 import IntersectionObserver from '@/components/IntersectionObserver.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <section
@@ -56,7 +57,7 @@ import IntersectionObserver from '@/components/IntersectionObserver.astro';
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
         <DifficultyCard
-          iconName="mdi--translate"
+          iconName="mdi:translate"
           iconColor="red"
           title="英語がわからず手続きが進まない"
         >
@@ -68,7 +69,7 @@ import IntersectionObserver from '@/components/IntersectionObserver.astro';
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
         <DifficultyCard
-          iconName="mdi--phone-off"
+          iconName="mdi:phone-off"
           iconColor="orange"
           title="銀行に問い合わせても返答がない"
         >
@@ -80,7 +81,7 @@ import IntersectionObserver from '@/components/IntersectionObserver.astro';
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
         <DifficultyCard
-          iconName="mdi--cash-remove"
+          iconName="mdi:cash-remove"
           iconColor="yellow"
           title="口座残高の回収方法が不明"
         >
@@ -92,7 +93,7 @@ import IntersectionObserver from '@/components/IntersectionObserver.astro';
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
         <DifficultyCard
-          iconName="mdi--airplane-off"
+          iconName="mdi:airplane-off"
           iconColor="red"
           title="現地に行かないと解約できないかも…"
         >
@@ -104,7 +105,7 @@ import IntersectionObserver from '@/components/IntersectionObserver.astro';
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
         <DifficultyCard
-          iconName="mdi--file-document-multiple"
+          iconName="mdi:file-document-multiple"
           iconColor="purple"
           title="相続手続きの複雑さ"
         >
@@ -121,10 +122,10 @@ import IntersectionObserver from '@/components/IntersectionObserver.astro';
           href="#contact"
           class="group from-primary-500 to-primary-700 inline-flex flex-col items-center gap-2 rounded-full bg-gradient-to-r px-4 py-3 shadow-2xl transition-all duration-300 hover:shadow-lg sm:flex-row sm:gap-4 sm:px-8 sm:py-4"
         >
-          <span
-            class="icon-[mdi--account-group] hidden text-white sm:block sm:text-3xl"
-          >
-          </span>
+          <Icon 
+            name="mdi:account-group" 
+            class="hidden text-white sm:block sm:text-3xl"
+          />
           <div class="text-center sm:text-left">
             <h3 class="text-base font-bold text-white sm:text-lg">
               実績多数の専門チームがサポート
@@ -136,7 +137,7 @@ import IntersectionObserver from '@/components/IntersectionObserver.astro';
           <div
             class="text-primary-600 group-hover:bg-primary-200 flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-bold transition-colors duration-300 sm:ml-4 sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
           >
-            <span class="icon-[mdi--message-text]"></span>
+            <Icon name="mdi:message-text" />
             <span>無料相談</span>
           </div>
         </a>

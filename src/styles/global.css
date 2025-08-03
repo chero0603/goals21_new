@@ -37,7 +37,14 @@
   --font-size-fluid-9xl: clamp(6rem, 4rem + 8vw, 14rem);
 }
 
-@plugin "@iconify/tailwind4";
+@plugin "@iconify/tailwind4" {
+  "iconSets": ["mdi", "mdi-light"]
+}
+
+/* 背景画像用のCSS変数サポート */
+.bg-variable::before {
+  background-image: var(--bg-image);
+}
 
 /* Fluidテキストユーティリティクラス */
 @utility text-fluid-xs { font-size: var(--font-size-fluid-xs); }

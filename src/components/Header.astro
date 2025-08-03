@@ -1,6 +1,7 @@
 ---
 import logo from '@/assets/images/logo.svg';
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 ---
 
 <header
@@ -27,10 +28,10 @@ import { Image } from 'astro:assets';
       class="bg-primary-500 hover:bg-primary-400 group flex items-center justify-between gap-7 rounded-full px-4 py-2 font-bold text-white shadow transition-all duration-300 hover:shadow-lg sm:px-6 sm:py-4"
       href="#contact"
     >
-      <span
-        class="icon-[mdi--mail] block text-2xl text-white transition-transform duration-300 group-hover:translate-x-1"
-      >
-      </span>
+      <Icon
+        name="mdi:mail"
+        class="block text-2xl text-white transition-transform duration-300 group-hover:translate-x-1"
+      />
       <span class="hidden text-center text-sm md:block md:text-base/[1]">
         メールで相談する<br />
         <small class="text-xs text-yellow-300">相談は無料です</small>

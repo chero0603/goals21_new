@@ -17,18 +17,27 @@ const {
   delay,
   class: additionalClass = '',
 } = Astro.props;
+
+// 画像のURLを適切に処理
+const processedImageUrl = imageUrl.startsWith('../assets/') 
+  ? imageUrl.replace('../assets/', '/src/assets/') 
+  : imageUrl;
 ---
 
 <IntersectionObserver
   class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-  style={`animation-delay: ${delay};`}
+  style={`animation-delay: ${delay}; --animation-delay: ${delay};`}
 >
   <section
     class={cn(
-      `relative px-6 py-16 text-white before:absolute before:inset-0 before:bg-[url(${imageUrl})] before:bg-cover before:bg-center before:brightness-50 before:grayscale before:content-[''] before:transition-all before:duration-700 hover:before:grayscale-0 sm:px-12 sm:py-20`,
+      'group relative px-6 py-16 text-white sm:px-12 sm:py-20 bg-cover bg-center bg-no-repeat',
       additionalClass
     )}
+    style={`background-image: url(${processedImageUrl});`}
   >
+    {/* 背景のフィルターレイヤー */}
+    <div class="absolute inset-0 bg-black/50 grayscale transition-all duration-700 group-hover:grayscale-0"></div>
+    
     <div class="relative z-10">
       <h3 class="mb-2 text-lg font-semibold sm:text-xl">
         {title}

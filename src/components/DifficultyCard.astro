@@ -1,5 +1,6 @@
 ---
 // Difficulty card component
+import { Icon } from 'astro-icon/components';
 import { cn } from '../utils/cn';
 
 interface Props {
@@ -60,7 +61,7 @@ const colors = colorClasses[iconColor];
           colors.bg
         )}
       >
-        <span class={cn(`icon-[${iconName}] text-3xl`, colors.text)}></span>
+        <Icon name={iconName} class={cn('text-3xl', colors.text)} />
       </div>
     </div>
     <div class="sm:col-span-1">

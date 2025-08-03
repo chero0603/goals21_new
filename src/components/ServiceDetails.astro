@@ -2,6 +2,7 @@
 // Service Details section component
 import IntersectionObserver from '@/components/IntersectionObserver.astro';
 import SupportList from '@/components/SupportList.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <section
@@ -39,10 +40,10 @@ import SupportList from '@/components/SupportList.astro';
           <h3
             class="text-primary-700 mb-6 text-center text-xl font-bold sm:text-2xl"
           >
-            <span
-              class="icon-[mdi--account-group] text-primary-500 mr-2 align-middle text-3xl"
-            >
-            </span>
+            <Icon
+              name="mdi:account-group"
+              class="text-primary-500 mr-2 align-middle text-3xl"
+            />
             専門チームによる包括的サポート
           </h3>
           <SupportList />
