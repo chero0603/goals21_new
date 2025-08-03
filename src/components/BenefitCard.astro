@@ -1,0 +1,41 @@
+---
+import { cn } from '../utils/cn';
+import IntersectionObserver from './IntersectionObserver.astro';
+
+interface Props {
+  imageUrl: string;
+  title: string;
+  description: string;
+  delay: string;
+  class?: string;
+}
+
+const {
+  imageUrl,
+  title,
+  description,
+  delay,
+  class: additionalClass = '',
+} = Astro.props;
+---
+
+<IntersectionObserver
+  class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+  style={`animation-delay: ${delay};`}
+>
+  <section
+    class={cn(
+      `relative px-6 py-16 text-white before:absolute before:inset-0 before:bg-[url(${imageUrl})] before:bg-cover before:bg-center before:brightness-50 before:grayscale before:content-[''] before:transition-all before:duration-700 hover:before:grayscale-0 sm:px-12 sm:py-20`,
+      additionalClass
+    )}
+  >
+    <div class="relative z-10">
+      <h3 class="mb-2 text-lg font-semibold sm:text-xl">
+        {title}
+      </h3>
+      <p class="text-sm">
+        {description}
+      </p>
+    </div>
+  </section>
+</IntersectionObserver>

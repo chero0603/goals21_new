@@ -1,31 +1,56 @@
 ---
-// Benefits section component
+import BenefitCard from './BenefitCard.astro';
+import IntersectionObserver from './IntersectionObserver.astro';
 ---
 
 <section
   aria-labelledby="benefits-heading"
   itemscope
   itemtype="https://schema.org/Service"
+  class="pt-6 sm:pt-12"
 >
-  <h2 id="benefits-heading">当サービスご利用で実現できること</h2>
-  <article>
-    <h3>現地渡航一切不要</h3>
-    <p>日本にいながらすべての手続きが完了。渡航費用・時間を大幅削減</p>
-  </article>
-  <article>
-    <h3>確実な預金回収</h3>
-    <p>凍結口座も州政府移管預金も、あなたの日本口座へ確実に送金</p>
-  </article>
-  <article>
-    <h3>完全日本語対応</h3>
-    <p>英語書類の翻訳から銀行との交渉まで、すべて日本語でサポート</p>
-  </article>
-  <article>
-    <h3>スピード解決</h3>
-    <p>豊富な実績による効率的な手続きで、最短1ヶ月で問題解決</p>
-  </article>
-  <article>
-    <h3>ストレスフリー</h3>
-    <p>面倒な書類作成、銀行とのやり取りはすべてお任せ</p>
-  </article>
+  <div>
+    <IntersectionObserver
+      class="data-[observer=true]:animate-slide-in-left-800 delay-order-child opacity-0"
+    >
+      <h2
+        id="benefits-heading"
+        class="mb-8 pl-6 text-center text-xl font-bold sm:mb-12 sm:pl-12 sm:text-3xl lg:text-4xl"
+      >
+        当サービスご利用で実現できること
+      </h2>
+    </IntersectionObserver>
+    <div class="mx-auto flex w-full flex-col">
+      <div class="grid grid-cols-1 border-t border-white sm:grid-cols-2">
+        <BenefitCard
+          imageUrl="../assets/images/benefits_01.jpg"
+          title="現地渡航一切不要"
+          description="日本にいながらすべての手続きが完了。渡航費用・時間を大幅削減"
+          delay="0.1s"
+          class="border-b border-white sm:border-r sm:border-white"
+        />
+        <BenefitCard
+          imageUrl="../assets/images/benefits_02.jpg"
+          title="確実な預金回収"
+          description="凍結口座も州政府移管預金も、あなたの日本口座へ確実に送金"
+          delay="0.2s"
+          class="border-b border-white"
+        />
+        <BenefitCard
+          imageUrl="../assets/images/benefits_03.jpg"
+          title="完全日本語対応"
+          description="英語書類の翻訳から銀行との交渉まで、すべて日本語でサポート"
+          delay="0.3s"
+          class="border-b border-white sm:border-r sm:border-white"
+        />
+        <BenefitCard
+          imageUrl="../assets/images/benefits_04.jpg"
+          title="スピード解決"
+          description="豊富な実績による効率的な手続きで、最短1ヶ月で問題解決"
+          delay="0.4s"
+          class="border-b border-white"
+        />
+      </div>
+    </div>
+  </div>
 </section>
