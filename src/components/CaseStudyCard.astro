@@ -1,0 +1,30 @@
+---
+// Case Study Card component
+interface Props {
+  imageSrc: ImageMetadata;
+  title: string;
+  description: string;
+  animationDelay?: string;
+}
+
+const { imageSrc, title, description, animationDelay = "0s" } = Astro.props;
+---
+
+<article
+  class="relative aspect-[16/9] overflow-hidden bg-gray-100 bg-cover bg-center transition-all duration-300"
+  style={`background-image: url(${imageSrc.src}); animation-delay: ${animationDelay};`}
+  itemscope
+  itemtype="https://schema.org/ListItem"
+>
+  <div class="absolute inset-0 bg-black/60"></div>
+  <div class="relative flex h-full flex-col">
+    <div class="flex-1"></div>
+    <div class="p-4">
+      <h3 class="mb-2 text-sm font-bold text-white sm:text-base" set:html={title}>
+      </h3>
+      <p class="text-xs leading-relaxed text-gray-200 sm:text-sm">
+        {description}
+      </p>
+    </div>
+  </div>
+</article>

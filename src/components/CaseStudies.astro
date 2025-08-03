@@ -1,24 +1,88 @@
 ---
 // Case Studies section component
+import CaseStudies01 from '@/assets/images/casestudies_01.jpg';
+import CaseStudies02 from '@/assets/images/casestudies_02.jpg';
+import CaseStudies03 from '@/assets/images/casestudies_03.jpg';
+import CaseStudies04 from '@/assets/images/casestudies_04.jpg';
+import CaseStudyCard from './CaseStudyCard.astro';
+import IntersectionObserver from './IntersectionObserver.astro';
 ---
 
-<section aria-labelledby="case-studies-heading">
-  <h2 id="case-studies-heading">確かな実績が信頼の証明（一部抜粋）</h2>
-  <article>
-    <h3>イギリス・Barclays銀行</h3>
-    <p>帰国後、口座凍結。依頼後2か月で日本の口座に預金を回収。</p>
-  </article>
-  <article>
-    <h3>アメリカの銀行口座</h3>
-    <p>放置して州政府に移管された預金を半年で回収。</p>
-  </article>
-  <article>
-    <h3>香港・HSBC銀行（相続）</h3>
-    <p>相続関連の書類作成・英訳をサポート。2か月で全額を回収。</p>
-  </article>
-  <article>
-    <h3>シンガポール法人の銀行口座（DBS銀行）</h3>
-    <p>法人解散後の預金を個人口座へ1か月で移管。</p>
-  </article>
-  <p><strong>その他、多くの解決実績</strong></p>
+<section
+  aria-labelledby="case-studies-heading"
+  itemscope
+  itemtype="https://schema.org/ItemList"
+>
+  <div>
+    <IntersectionObserver
+      class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+    >
+      <h2
+        id="case-studies-heading"
+        class="from-primary-500 to-primary-700 mb-8 bg-gradient-to-r bg-clip-text pt-6 text-center text-2xl font-bold text-transparent sm:mb-12 sm:pt-12 sm:text-4xl lg:text-5xl"
+      >
+        確かな実績が信頼の証明
+      </h2>
+    </IntersectionObserver>
+
+    <div
+      class="animate-order-200 ml-0 grid grid-cols-1 items-stretch sm:ml-[20vw] sm:grid-cols-2"
+    >
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+      >
+        <CaseStudyCard
+          imageSrc={CaseStudies01}
+          title="イギリス・Barclays銀行"
+          description="帰国後、口座凍結。依頼後2か月で日本の口座に預金を回収。"
+          animationDelay="0.1s"
+        />
+      </IntersectionObserver>
+
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+      >
+        <CaseStudyCard
+          imageSrc={CaseStudies02}
+          title="アメリカの銀行口座"
+          description="放置して州政府に移管された預金を半年で回収。"
+          animationDelay="0.2s"
+        />
+      </IntersectionObserver>
+
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+      >
+        <CaseStudyCard
+          imageSrc={CaseStudies03}
+          title="香港・HSBC銀行（相続）"
+          description="相続関連の書類作成・英訳をサポート。2か月で全額を回収。"
+          animationDelay="0.3s"
+        />
+      </IntersectionObserver>
+
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+      >
+        <CaseStudyCard
+          imageSrc={CaseStudies04}
+          title="シンガポール法人の銀行口座<br />（DBS銀行）"
+          description="法人解散後の預金を個人口座へ1か月で移管。"
+          animationDelay="0.4s"
+        />
+      </IntersectionObserver>
+    </div>
+
+    <IntersectionObserver
+      class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+    >
+      <div class="mt-8 pb-12 text-center sm:mt-12 sm:pb-16">
+        <p
+          class="from-primary-500 to-primary-700 bg-gradient-to-r bg-clip-text text-lg font-bold text-transparent sm:text-xl"
+        >
+          その他、多くの解決実績があります
+        </p>
+      </div>
+    </IntersectionObserver>
+  </div>
 </section>
