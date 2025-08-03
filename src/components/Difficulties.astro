@@ -1,11 +1,14 @@
 ---
 // Difficulties section component
+import DifficultyCard from '@/components/DifficultyCard.astro';
 import IntersectionObserver from '@/components/IntersectionObserver.astro';
 ---
 
 <section
   aria-labelledby="difficulties-heading"
-  class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-red-900 to-orange-900 p-6 sm:p-12"
+  class="relative overflow-hidden bg-[url(../assets/images/difficulty_sm.jpg)] bg-cover bg-right bg-no-repeat p-6 sm:bg-[url(../assets/images/difficulty.jpg)] sm:p-12"
+  itemscope
+  itemtype="https://schema.org/FAQPage"
 >
   <!-- Background pattern -->
   <div class="absolute inset-0 opacity-10">
@@ -23,15 +26,14 @@ import IntersectionObserver from '@/components/IntersectionObserver.astro';
     </div>
   </div>
 
-  <div class="relative mx-auto max-w-4xl">
+  <div class="relative mx-auto max-w-6xl">
     <IntersectionObserver
       class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
-      repeat={true}
     >
-      <div class="mb-12 text-center">
+      <div class="mb-8 text-center sm:mb-12">
         <h2
           id="difficulties-heading"
-          class="mb-4 text-3xl font-bold text-white sm:text-5xl lg:text-6xl"
+          class="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl"
         >
           こんな状況で
           <span
@@ -47,186 +49,97 @@ import IntersectionObserver from '@/components/IntersectionObserver.astro';
       </div>
     </IntersectionObserver>
 
-    <div class="animate-order-200 space-y-6">
+    <div
+      class="animate-order-200 grid items-stretch gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-2"
+    >
       <IntersectionObserver
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
-        <div
-          class="group flex items-start gap-6 rounded-2xl bg-white/10 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
+        <DifficultyCard
+          iconName="mdi--translate"
+          iconColor="red"
+          title="英語がわからず手続きが進まない"
         >
-          <div class="flex-shrink-0">
-            <div
-              class="flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-red-400 bg-red-500/20"
-            >
-              <span class="icon-[mdi--translate] text-3xl text-red-400"></span>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3 class="mb-2 text-xl font-bold text-white">
-              英語がわからず手続きが進まない
-            </h3>
-            <p class="leading-relaxed text-gray-300">
-              書類が英語で理解できず、どこから手をつければいいか分からない状態が続いている
-            </p>
-          </div>
-          <div
-            class="flex-shrink-0 opacity-50 transition-opacity duration-300 group-hover:opacity-100"
-          >
-            <span class="icon-[mdi--alert-circle] text-2xl text-red-400"></span>
-          </div>
-        </div>
+          書類が英語で理解できず、どこから手をつければいいか分からない状態が続いている
+        </DifficultyCard>
       </IntersectionObserver>
 
       <IntersectionObserver
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
-        <div
-          class="group flex items-start gap-6 rounded-2xl bg-white/10 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
+        <DifficultyCard
+          iconName="mdi--phone-off"
+          iconColor="orange"
+          title="銀行に問い合わせても返答がない"
         >
-          <div class="flex-shrink-0">
-            <div
-              class="flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-orange-400 bg-orange-500/20"
-            >
-              <span class="icon-[mdi--phone-off] text-3xl text-orange-400">
-              </span>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3 class="mb-2 text-xl font-bold text-white">
-              銀行に問い合わせても返答がない
-            </h3>
-            <p class="leading-relaxed text-gray-300">
-              メールや電話をしても適切な回答を得られず、たらい回しにされてしまう
-            </p>
-          </div>
-          <div
-            class="flex-shrink-0 opacity-50 transition-opacity duration-300 group-hover:opacity-100"
-          >
-            <span class="icon-[mdi--alert-circle] text-2xl text-orange-400">
-            </span>
-          </div>
-        </div>
+          メールや電話をしても適切な回答を得られず、たらい回しにされてしまう
+        </DifficultyCard>
       </IntersectionObserver>
 
       <IntersectionObserver
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
-        <div
-          class="group flex items-start gap-6 rounded-2xl bg-white/10 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
+        <DifficultyCard
+          iconName="mdi--cash-remove"
+          iconColor="yellow"
+          title="口座残高の回収方法が不明"
         >
-          <div class="flex-shrink-0">
-            <div
-              class="flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-yellow-400 bg-yellow-500/20"
-            >
-              <span class="icon-[mdi--cash-remove] text-3xl text-yellow-400">
-              </span>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3 class="mb-2 text-xl font-bold text-white">
-              口座残高の回収方法が不明
-            </h3>
-            <p class="leading-relaxed text-gray-300">
-              預金をどうやって日本に送金すればいいのか、具体的な手順が全く分からない
-            </p>
-          </div>
-          <div
-            class="flex-shrink-0 opacity-50 transition-opacity duration-300 group-hover:opacity-100"
-          >
-            <span class="icon-[mdi--alert-circle] text-2xl text-yellow-400">
-            </span>
-          </div>
-        </div>
+          預金をどうやって日本に送金すればいいのか、具体的な手順が全く分からない
+        </DifficultyCard>
       </IntersectionObserver>
 
       <IntersectionObserver
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
-        <div
-          class="group flex items-start gap-6 rounded-2xl bg-white/10 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
+        <DifficultyCard
+          iconName="mdi--airplane-off"
+          iconColor="red"
+          title="現地に行かないと解約できないかも…"
         >
-          <div class="flex-shrink-0">
-            <div
-              class="flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-red-400 bg-red-500/20"
-            >
-              <span class="icon-[mdi--airplane-off] text-3xl text-red-400">
-              </span>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3 class="mb-2 text-xl font-bold text-white">
-              現地に行かないと解約できないかも…
-            </h3>
-            <p class="leading-relaxed text-gray-300">
-              本当に日本から手続きできるのか不安で、現地まで行く必要があるのではと心配している
-            </p>
-          </div>
-          <div
-            class="flex-shrink-0 opacity-50 transition-opacity duration-300 group-hover:opacity-100"
-          >
-            <span class="icon-[mdi--alert-circle] text-2xl text-red-400"></span>
-          </div>
-        </div>
+          本当に日本から手続きできるのか不安で、現地まで行く必要があるのではと心配している
+        </DifficultyCard>
       </IntersectionObserver>
 
       <IntersectionObserver
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
-        <div
-          class="group flex items-start gap-6 rounded-2xl bg-white/10 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
+        <DifficultyCard
+          iconName="mdi--file-document-multiple"
+          iconColor="purple"
+          title="相続手続きの複雑さ"
         >
-          <div class="flex-shrink-0">
-            <div
-              class="flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-purple-400 bg-purple-500/20"
-            >
-              <span
-                class="icon-[mdi--file-document-multiple] text-3xl text-purple-400"
-              >
-              </span>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3 class="mb-2 text-xl font-bold text-white">
-              相続手続きの複雑さ
-            </h3>
-            <p class="leading-relaxed text-gray-300">
-              故人の海外口座をどう処理すればいいか、相続に関する法的手続きが全く分からない
-            </p>
-          </div>
-          <div
-            class="flex-shrink-0 opacity-50 transition-opacity duration-300 group-hover:opacity-100"
-          >
-            <span class="icon-[mdi--alert-circle] text-2xl text-purple-400">
-            </span>
-          </div>
-        </div>
+          故人の海外口座をどう処理すればいいか、相続に関する法的手続きが全く分からない
+        </DifficultyCard>
       </IntersectionObserver>
     </div>
 
     <IntersectionObserver
       class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
     >
-      <div class="mt-16 text-center">
-        <div
-          class="inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 shadow-2xl"
+      <div class="mt-8 text-center sm:mt-12">
+        <a
+          href="#contact"
+          class="group from-primary-500 to-primary-700 inline-flex flex-col items-center gap-2 rounded-full bg-gradient-to-r px-4 py-3 shadow-2xl transition-all duration-300 hover:shadow-lg sm:flex-row sm:gap-4 sm:px-8 sm:py-4"
         >
-          <span class="icon-[mdi--account-group] text-3xl text-white"></span>
-          <div class="text-left">
-            <h3 class="text-lg font-bold text-white">
+          <span
+            class="icon-[mdi--account-group] hidden text-white sm:block sm:text-3xl"
+          >
+          </span>
+          <div class="text-center sm:text-left">
+            <h3 class="text-base font-bold text-white sm:text-lg">
               実績多数の専門チームがサポート
             </h3>
-            <p class="text-sm text-blue-100">
+            <p class="text-primary-100 text-xs sm:text-sm">
               ひとりで悩まず、まずはお気軽にご相談ください
             </p>
           </div>
-          <a
-            href="#contact"
-            class="ml-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-blue-600 transition-colors duration-300 hover:bg-blue-50"
+          <div
+            class="text-primary-600 group-hover:bg-primary-200 flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-bold transition-colors duration-300 sm:ml-4 sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
           >
             <span class="icon-[mdi--message-text]"></span>
-            無料相談
-          </a>
-        </div>
+            <span>無料相談</span>
+          </div>
+        </a>
       </div>
     </IntersectionObserver>
   </div>

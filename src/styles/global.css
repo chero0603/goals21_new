@@ -20,6 +20,36 @@
   --color-primary-800: var(--color-sky-800);
   --color-primary-900: var(--color-sky-900);
   --color-primary-950: var(--color-sky-950);
+
+  /* Fluidテキストサイズ - レスポンシブ対応（大胆な変化） */
+  --font-size-fluid-xs: clamp(0.65rem, 0.5rem + 0.5vw, 0.9rem);
+  --font-size-fluid-sm: clamp(0.75rem, 0.6rem + 0.6vw, 1.1rem);
+  --font-size-fluid-base: clamp(0.85rem, 0.7rem + 0.7vw, 1.3rem);
+  --font-size-fluid-lg: clamp(1rem, 0.8rem + 0.8vw, 1.5rem);
+  --font-size-fluid-xl: clamp(1.2rem, 0.9rem + 1vw, 1.8rem);
+  --font-size-fluid-2xl: clamp(1.4rem, 1rem + 1.5vw, 2.5rem);
+  --font-size-fluid-3xl: clamp(1.8rem, 1.2rem + 2vw, 3.2rem);
+  --font-size-fluid-4xl: clamp(2.2rem, 1.4rem + 2.5vw, 4rem);
+  --font-size-fluid-5xl: clamp(2.8rem, 1.8rem + 3vw, 5rem);
+  --font-size-fluid-6xl: clamp(3.5rem, 2.2rem + 4vw, 6.5rem);
+  --font-size-fluid-7xl: clamp(4rem, 2.5rem + 5vw, 8rem);
+  --font-size-fluid-8xl: clamp(5rem, 3rem + 6vw, 10rem);
+  --font-size-fluid-9xl: clamp(6rem, 4rem + 8vw, 14rem);
 }
 
 @plugin "@iconify/tailwind4";
+
+/* Fluidテキストユーティリティクラス */
+@utility text-fluid-xs { font-size: var(--font-size-fluid-xs); }
+@utility text-fluid-sm { font-size: var(--font-size-fluid-sm); }
+@utility text-fluid-base { font-size: var(--font-size-fluid-base); }
+@utility text-fluid-lg { font-size: var(--font-size-fluid-lg); }
+@utility text-fluid-xl { font-size: var(--font-size-fluid-xl); }
+@utility text-fluid-2xl { font-size: var(--font-size-fluid-2xl); }
+@utility text-fluid-3xl { font-size: var(--font-size-fluid-3xl); }
+@utility text-fluid-4xl { font-size: var(--font-size-fluid-4xl); }
+@utility text-fluid-5xl { font-size: var(--font-size-fluid-5xl); }
+@utility text-fluid-6xl { font-size: var(--font-size-fluid-6xl); }
+@utility text-fluid-7xl { font-size: var(--font-size-fluid-7xl); }
+@utility text-fluid-8xl { font-size: var(--font-size-fluid-8xl); }
+@utility text-fluid-9xl { font-size: var(--font-size-fluid-9xl); }

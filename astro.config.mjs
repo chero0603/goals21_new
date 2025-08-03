@@ -7,6 +7,10 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   integrations: [icon()],
   base: '/goals21/',
+  server: {
+    host: '0.0.0.0',
+    port: 4321,
+  },
   vite: {
     plugins: [tailwindcss()],
   },
