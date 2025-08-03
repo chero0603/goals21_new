@@ -2,8 +2,11 @@
   "name": "goals21_new",
   "version": "0.0.1",
   "dependencies": {
+    "@iconify-json/emojione": "^1.2.1",
+    "@iconify-json/flag": "^1.2.6",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/mdi-light": "^1.2.2",
+    "@iconify-json/twemoji": "^1.2.2",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.0",
     "clsx": "^2.1.1",
@@ -19,7 +22,7 @@
   },
   "type": "module",
   "devDependencies": {
-    "@iconify/json": "^2.2.359",
+    "@iconify/json": "^2.2.365",
     "@iconify/tailwind4": "^1.0.6",
     "astro-icon": "^1.1.5",
     "prettier": "^3.6.2",

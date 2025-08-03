@@ -11,6 +11,9 @@ export default defineConfig({
       include: {
         mdi: ["*"],
         "mdi-light": ["*"],
+        "flag": ["*"],
+        "emojione": ["*"],
+        "twemoji": ["*"],
       },
     }),
   ],

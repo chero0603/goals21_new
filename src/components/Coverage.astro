@@ -1,44 +1,213 @@
 ---
 // Coverage section component
+import IntersectionObserver from '@/components/IntersectionObserver.astro';
+import { Icon } from 'astro-icon/components';
+
+// 国とアイコンのマッピング
+const countries = {
+  northAmerica: [
+    { name: 'アメリカ', icon: 'flag:us-4x3' },
+    { name: 'カナダ', icon: 'flag:ca-4x3' },
+  ],
+  europe: [
+    { name: 'イギリス', icon: 'flag:gb-4x3' },
+    { name: 'オーストラリア', icon: 'flag:au-4x3' },
+    { name: 'オランダ', icon: 'flag:nl-4x3' },
+    { name: 'フランス', icon: 'flag:fr-4x3' },
+    { name: 'ドイツ', icon: 'flag:de-4x3' },
+    { name: 'ジョージア', icon: 'flag:ge-4x3' },
+    { name: 'スイス', icon: 'flag:ch-4x3' },
+    { name: 'リヒテンシュタイン', icon: 'flag:li-4x3' },
+  ],
+  asia: [
+    { name: '香港', icon: 'flag:hk-4x3' },
+    { name: 'シンガポール', icon: 'flag:sg-4x3' },
+    { name: 'インドネシア', icon: 'flag:id-4x3' },
+    { name: 'マレーシア', icon: 'flag:my-4x3' },
+    { name: 'カンボジア', icon: 'flag:kh-4x3' },
+    { name: '韓国', icon: 'flag:kr-4x3' },
+  ],
+};
 ---
 
-<section aria-labelledby="coverage-heading">
-  <h2 id="coverage-heading">主なサポート対象国</h2>
-  <article>
-    <h3>北米・欧州</h3>
-    <p>
-      アメリカ、イギリス、オーストラリア、カナダ、オランダ、フランス、ドイツ、ジョージア、スイス、リヒテンシュタイン
-    </p>
-  </article>
+<section
+  aria-labelledby="coverage-heading"
+  class="bg-gradient-to-br from-gray-50 to-gray-100 p-6 sm:p-12"
+>
+  <div class="mx-auto max-w-6xl">
+    <IntersectionObserver
+      class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+    >
+      <h2
+        id="coverage-heading"
+        class="from-primary-500 to-primary-700 mb-8 bg-gradient-to-r bg-clip-text text-center text-2xl font-bold text-transparent sm:mb-12 sm:text-4xl lg:text-5xl"
+      >
+        主なサポート対象国
+      </h2>
+    </IntersectionObserver>
 
-  <article>
-    <h3>アジア</h3>
-    <p>香港、シンガポール、インドネシア、マレーシア、カンボジア、韓国</p>
-  </article>
+    <div class="space-y-8">
+      <!-- 北米・欧州とアジアの2カラムレイアウト -->
+      <div class="grid gap-8 sm:grid-cols-2 sm:items-stretch">
+        <IntersectionObserver
+          class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+        >
+          <article
+            class="h-full rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md"
+          >
+            <h3
+              class="mb-4 flex items-center gap-3 text-xl font-bold text-gray-800"
+            >
+              北米・欧州
+            </h3>
+            <div class="space-y-3">
+              <div class="flex flex-wrap gap-2">
+                {
+                  countries.northAmerica.map(country => (
+                    <div class="flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-2">
+                      <Icon name={country.icon} class="h-4 w-6" />
+                      <span class="text-sm font-medium text-gray-700">
+                        {country.name}
+                      </span>
+                    </div>
+                  ))
+                }
+              </div>
+              <div class="flex flex-wrap gap-2">
+                {
+                  countries.europe.map(country => (
+                    <div class="flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-2">
+                      <Icon name={country.icon} class="h-4 w-6" />
+                      <span class="text-xs font-medium text-gray-700">
+                        {country.name}
+                      </span>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </article>
+        </IntersectionObserver>
 
-  <article>
-    <h3>主な対応可能銀行</h3>
-    <dl>
-      <dt><strong>アメリカ</strong></dt>
-      <dd>Citibank、Bank of America、Chase Bank、Wells Fargo</dd>
-      <dt><strong>イギリス</strong></dt>
-      <dd>
-        Natwest、Barclays、HSBC、Standard Chartered Bank、Lloyds、Santander
-      </dd>
-      <dt><strong>オーストラリア</strong></dt>
-      <dd>ANZ、NAB、Commonwealth Bank</dd>
-      <dt><strong>カナダ</strong></dt>
-      <dd>BMO、TD Bank、RBC、CIBC</dd>
-      <dt><strong>シンガポール</strong></dt>
-      <dd>DBS、UOB、OCBC</dd>
-      <dt><strong>インドネシア</strong></dt>
-      <dd>BRI、Mandiri</dd>
-      <dt><strong>マレーシア</strong></dt>
-      <dd>Maybank、CIMB</dd>
-      <dt><strong>欧州その他</strong></dt>
-      <dd>ABN AMRO、BNPパリバ、ドイツ銀行、Bank of Georgia、TBC、Terabank</dd>
-    </dl>
-    <p><small>※その他マイナーな銀行にも対応可能。</small></p>
-    <p>現地渡航するより安く、手間なく口座解約と残高送金をサポートします。</p>
-  </article>
+        <IntersectionObserver
+          class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+        >
+          <article
+            class="h-full rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md"
+          >
+            <h3
+              class="mb-4 flex items-center gap-3 text-xl font-bold text-gray-800"
+            >
+              アジア
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {
+                countries.asia.map(country => (
+                  <div class="flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-2">
+                    <Icon name={country.icon} class="h-4 w-6" />
+                    <span class="text-xs font-medium text-gray-700">
+                      {country.name}
+                    </span>
+                  </div>
+                ))
+              }
+            </div>
+          </article>
+        </IntersectionObserver>
+      </div>
+
+      <!-- 主な対応可能銀行の1カラムレイアウト -->
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+      >
+        <article
+          class="rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md"
+        >
+          <h3
+            class="mb-4 flex items-center gap-3 text-xl font-bold text-gray-800"
+          >
+            主な対応可能銀行
+          </h3>
+          <dl class="grid gap-4 text-xs sm:grid-cols-2">
+            <div>
+              <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
+                <Icon name="flag:us-4x3" class="h-3 w-4" />
+                アメリカ
+              </dt>
+              <dd class="pl-6 text-gray-600">
+                Citibank、Bank of America、Chase Bank、Wells Fargo
+              </dd>
+            </div>
+            <div>
+              <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
+                <Icon name="flag:gb-4x3" class="h-3 w-4" />
+                イギリス
+              </dt>
+              <dd class="pl-6 text-gray-600">
+                Natwest、Barclays、HSBC、Standard Chartered
+                Bank、Lloyds、Santander
+              </dd>
+            </div>
+            <div>
+              <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
+                <Icon name="flag:au-4x3" class="h-3 w-4" />
+                オーストラリア
+              </dt>
+              <dd class="pl-6 text-gray-600">ANZ、NAB、Commonwealth Bank</dd>
+            </div>
+            <div>
+              <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
+                <Icon name="flag:ca-4x3" class="h-3 w-4" />
+                カナダ
+              </dt>
+              <dd class="pl-6 text-gray-600">BMO、TD Bank、RBC、CIBC</dd>
+            </div>
+            <div>
+              <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
+                <Icon name="flag:sg-4x3" class="h-3 w-4" />
+                シンガポール
+              </dt>
+              <dd class="pl-6 text-gray-600">DBS、UOB、OCBC</dd>
+            </div>
+            <div>
+              <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
+                <Icon name="flag:id-4x3" class="h-3 w-4" />
+                インドネシア
+              </dt>
+              <dd class="pl-6 text-gray-600">BRI、Mandiri</dd>
+            </div>
+            <div>
+              <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
+                <Icon name="flag:my-4x3" class="h-3 w-4" />
+                マレーシア
+              </dt>
+              <dd class="pl-6 text-gray-600">Maybank、CIMB</dd>
+            </div>
+            <div>
+              <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
+                <Icon name="mdi:earth" class="h-3 w-4 text-blue-500" />
+                欧州その他
+              </dt>
+              <dd class="pl-6 text-gray-600">
+                ABN AMRO、BNPパリバ、ドイツ銀行、Bank of Georgia、TBC、Terabank
+              </dd>
+            </div>
+          </dl>
+        </article>
+      </IntersectionObserver>
+    </div>
+
+    <IntersectionObserver
+      class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+    >
+      <div class="mt-2 text-center sm:mt-4">
+        <p class="text-xs text-gray-600">※その他マイナーな銀行にも対応可能。</p>
+        <p class="text-xs font-medium text-gray-800">
+          現地渡航するより安く、
+          <br class="inline sm:hidden" />
+          手間なく口座解約と残高送金をサポートします。
+        </p>
+      </div>
+    </IntersectionObserver>
+  </div>
 </section>
