@@ -1,37 +1,112 @@
 ---
 // Pricing section component
+import IntersectionObserver from './IntersectionObserver.astro';
 ---
 
 <section
   aria-labelledby="pricing-heading"
   itemscope
   itemtype="https://schema.org/PriceSpecification"
+  class="bg-gradient-to-br from-slate-50 to-white py-16"
 >
-  <h2 id="pricing-heading">サポート料金</h2>
-  <table>
-    <caption>サービス料金表</caption>
-    <thead>
-      <tr>
-        <th scope="col">サービス内容</th>
-        <th scope="col">料金</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">個人口座解約手続サポート</th>
-        <td itemprop="price">220,000円（税込）</td>
-      </tr>
-      <tr>
-        <th scope="row">相続口座解約手続サポート</th>
-        <td>440,000円～（税込）</td>
-      </tr>
-      <tr>
-        <th scope="row">法人口座解約手続サポート</th>
-        <td>330,000円～（税込）</td>
-      </tr>
-    </tbody>
-  </table>
-  <p>
-    <small>※書類認証費用や国際郵便料金などの実費は別途必要となります。</small>
-  </p>
+  <div class="mx-auto max-w-6xl px-4">
+    <IntersectionObserver
+      class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+    >
+      <h2
+        id="pricing-heading"
+        class="mb-8 text-center text-4xl font-bold text-slate-800 sm:mb-12 lg:text-5xl"
+      >
+        サポート料金
+      </h2>
+    </IntersectionObserver>
+
+    <IntersectionObserver
+      class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+    >
+      <div class="mx-auto max-w-6xl overflow-hidden bg-white shadow-lg">
+        <table class="w-full">
+          <caption class="sr-only">サービス料金表</caption>
+          <thead class="bg-gradient-to-r from-slate-700 to-slate-800">
+            <tr>
+              <th
+                scope="col"
+                class="px-3 py-3 text-left text-sm font-semibold text-white sm:px-8 sm:py-6 sm:text-lg"
+              >
+                サービス内容
+              </th>
+              <th
+                scope="col"
+                class="px-3 py-3 text-left text-sm font-semibold text-white sm:px-8 sm:py-6 sm:text-lg"
+              >
+                料金
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr class="transition-colors duration-200 hover:bg-slate-50">
+              <th
+                scope="row"
+                class="px-3 py-3 text-left text-sm font-bold text-slate-800 sm:px-8 sm:py-6 sm:text-base"
+              >
+                個人口座解約手続サポート
+              </th>
+              <td
+                itemprop="price"
+                class="text-primary-600 px-3 py-3 text-sm font-semibold sm:px-8 sm:py-6 sm:text-lg"
+              >
+                <span class="text-xl sm:text-3xl">220,000</span>円
+                <br class="inline sm:hidden" />
+                <span class="block text-right text-xs sm:inline">（税込）</span>
+              </td>
+            </tr>
+            <tr class="transition-colors duration-200 hover:bg-slate-50">
+              <th
+                scope="row"
+                class="px-3 py-4 text-left text-sm font-bold text-slate-800 sm:px-8 sm:py-6 sm:text-base"
+              >
+                相続口座解約手続サポート
+              </th>
+              <td
+                class="text-primary-600 px-3 py-4 text-sm font-semibold sm:px-8 sm:py-6 sm:text-lg"
+              >
+                <span class="text-xl sm:text-3xl">440,000</span>円～
+                <br class="inline sm:hidden" />
+                <span class="block text-right text-xs sm:inline">（税込）</span>
+              </td>
+            </tr>
+            <tr class="transition-colors duration-200 hover:bg-slate-50">
+              <th
+                scope="row"
+                class="px-3 py-4 text-left text-sm font-bold text-slate-800 sm:px-8 sm:py-6 sm:text-base"
+              >
+                法人口座解約手続サポート
+              </th>
+              <td
+                class="text-primary-600 px-3 py-4 text-sm font-semibold sm:px-8 sm:py-6 sm:text-lg"
+              >
+                <span class="text-xl sm:text-3xl">330,000</span>円～
+                <br class="inline sm:hidden" />
+                <span class="block text-right text-xs sm:inline">（税込）</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </IntersectionObserver>
+
+    <IntersectionObserver
+      class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+    >
+      <div class="mt-8 text-center">
+        <p
+          class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800"
+        >
+          <small class="text-sm">
+            ※書類認証費用や国際郵便料金などの実費は別途必要となります。
+          </small>
+        </p>
+      </div>
+    </IntersectionObserver>
+  </div>
 </section>
