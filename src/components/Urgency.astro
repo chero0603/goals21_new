@@ -1,19 +1,120 @@
 ---
 // Urgency section component
+import { Icon } from 'astro-icon/components';
+import IntersectionObserver from './IntersectionObserver.astro';
 ---
 
-<section aria-labelledby="urgency-heading">
-  <h2 id="urgency-heading">今すぐ行動すべき3つの理由</h2>
-  <article>
-    <h3>1. 時間経過で手続きが複雑化</h3>
-    <p>口座凍結→州政府移管→時効と、段階的に回収が困難になります</p>
-  </article>
-  <article>
-    <h3>2. 規制強化の流れ</h3>
-    <p>各国でマネーロンダリング対策が強化され、手続きがより厳格化しています</p>
-  </article>
-  <article>
-    <h3>3. 為替の好機</h3>
-    <p>円安の今、海外預金を日本円に換金する絶好のタイミングです</p>
-  </article>
+<section
+  aria-labelledby="urgency-heading"
+  class="relative overflow-hidden bg-gradient-to-br from-red-50 to-orange-100 p-6 sm:p-12"
+  itemscope
+  itemtype="https://schema.org/Article"
+>
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div
+      class="absolute top-10 right-10 h-24 w-24 rounded-full bg-red-400 blur-2xl"
+    >
+    </div>
+    <div
+      class="absolute bottom-10 left-10 h-32 w-32 rounded-full bg-orange-400 blur-2xl"
+    >
+    </div>
+  </div>
+
+  <div class="relative mx-auto max-w-6xl">
+    <IntersectionObserver
+      class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+    >
+      <h2
+        id="urgency-heading"
+        class="mb-8 text-center text-2xl font-bold text-slate-800 sm:mb-12 sm:text-4xl lg:text-5xl"
+      >
+        <span
+          class="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent"
+        >
+          今すぐ行動すべき
+        </span>
+        <br class="inline sm:hidden" />
+        3つの理由
+      </h2>
+    </IntersectionObserver>
+
+    <div class="grid gap-6 sm:gap-8 md:grid-cols-3">
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+      >
+        <article
+          class="group relative overflow-hidden rounded-lg bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          itemscope
+          itemtype="https://schema.org/Article"
+        >
+          <div class="mb-4 flex items-center">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-red-500 to-red-600 text-white"
+            >
+              <Icon name="mdi:clock-alert" class="h-6 w-6" />
+            </div>
+            <span class="ml-3 text-2xl font-bold text-red-600">1</span>
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-slate-800 sm:text-xl">
+            時間経過で手続きが複雑化
+          </h3>
+          <p class="leading-relaxed text-slate-600">
+            口座凍結→州政府移管→時効と、段階的に回収が困難になります
+          </p>
+        </article>
+      </IntersectionObserver>
+
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+      >
+        <article
+          class="group relative overflow-hidden rounded-lg bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          itemscope
+          itemtype="https://schema.org/Article"
+        >
+          <div class="mb-4 flex items-center">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white"
+            >
+              <Icon name="mdi:shield-alert" class="h-6 w-6" />
+            </div>
+            <span class="ml-3 text-2xl font-bold text-orange-600">2</span>
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-slate-800 sm:text-xl">
+            規制強化の流れ
+          </h3>
+          <p class="leading-relaxed text-slate-600">
+            各国でマネーロンダリング対策が強化され、手続きがより厳格化しています
+          </p>
+        </article>
+      </IntersectionObserver>
+
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+      >
+        <article
+          class="group relative overflow-hidden rounded-lg bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          itemscope
+          itemtype="https://schema.org/Article"
+        >
+          <div class="mb-4 flex items-center">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white"
+            >
+              <Icon name="mdi:trending-up" class="h-6 w-6" />
+            </div>
+            <span class="ml-3 text-2xl font-bold text-green-600">3</span>
+          </div>
+          <h3 class="mb-3 text-lg font-bold text-slate-800 sm:text-xl">
+            為替の好機
+          </h3>
+          <p class="leading-relaxed text-slate-600">
+            円安の今、海外預金を日本円に換金する絶好のタイミングです
+          </p>
+        </article>
+      </IntersectionObserver>
+    </div>
+  </div>
 </section>
