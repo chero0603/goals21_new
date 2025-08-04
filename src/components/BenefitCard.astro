@@ -31,8 +31,11 @@ const {
     style={`background-image: url(${imageSrc.src});`}
   >
     {/* 背景のフィルターレイヤー */}
-    <div class="absolute inset-0 bg-black/50 grayscale transition-all duration-700 group-hover:grayscale-0"></div>
-    
+    <div
+      class="absolute inset-0 bg-black/50 grayscale transition-all duration-700 group-hover:grayscale-0"
+    >
+    </div>
+
     <div class="relative z-10">
       <h3 class="mb-2 text-lg font-semibold sm:text-xl">
         {title}
