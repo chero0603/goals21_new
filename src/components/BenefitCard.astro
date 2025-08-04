@@ -3,7 +3,7 @@ import { cn } from '../utils/cn';
 import IntersectionObserver from './IntersectionObserver.astro';
 
 interface Props {
-  imageUrl: string;
+  imageSrc: ImageMetadata;
   title: string;
   description: string;
   delay: string;
@@ -11,17 +11,12 @@ interface Props {
 }
 
 const {
-  imageUrl,
+  imageSrc,
   title,
   description,
   delay,
   class: additionalClass = '',
 } = Astro.props;
-
-// 画像のURLを適切に処理
-const processedImageUrl = imageUrl.startsWith('../assets/') 
-  ? imageUrl.replace('../assets/', '/src/assets/') 
-  : imageUrl;
 ---
 
 <IntersectionObserver
@@ -33,7 +28,7 @@ const processedImageUrl = imageUrl.startsWith('../assets/')
       'group relative px-6 py-16 text-white sm:px-12 sm:py-20 bg-cover bg-center bg-no-repeat',
       additionalClass
     )}
-    style={`background-image: url(${processedImageUrl});`}
+    style={`background-image: url(${imageSrc.src});`}
   >
     {/* 背景のフィルターレイヤー */}
     <div class="absolute inset-0 bg-black/50 grayscale transition-all duration-700 group-hover:grayscale-0"></div>

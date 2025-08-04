@@ -1,8 +1,5 @@
 ---
-import { actions } from 'astro:actions';
-
-const result = Astro.getActionResult(actions.sendContactForm);
-console.log('Contact action result:', result);
+// 静的サイト生成用のContactコンポーネント
 ---
 
 <section
@@ -28,34 +25,9 @@ console.log('Contact action result:', result);
     </div>
 
     <div class="mx-auto max-w-4xl">
-      {
-        result?.data && (
-          <div
-            role="alert"
-            class="mb-6 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-green-800"
-          >
-            <p class="font-medium">{result.data.message}</p>
-          </div>
-        )
-      }
-
-      {
-        result?.error && (
-          <div
-            role="alert"
-            class="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-red-800"
-          >
-            <p class="font-medium">
-              送信に失敗しました。以下の内容をご確認ください：
-            </p>
-            {result.error.message && <p class="mt-2">{result.error.message}</p>}
-          </div>
-        )
-      }
-
       <form
         method="POST"
-        action={actions.sendContactForm + '#contact-form'}
+        action="#contact-form"
         id="contact-form"
         class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm"
       >

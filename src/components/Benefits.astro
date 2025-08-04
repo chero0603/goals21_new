@@ -1,6 +1,10 @@
 ---
 import BenefitCard from './BenefitCard.astro';
 import IntersectionObserver from './IntersectionObserver.astro';
+import Benefits01 from '@/assets/images/benefits_01.jpg';
+import Benefits02 from '@/assets/images/benefits_02.jpg';
+import Benefits03 from '@/assets/images/benefits_03.jpg';
+import Benefits04 from '@/assets/images/benefits_04.jpg';
 ---
 
 <section
@@ -23,28 +27,28 @@ import IntersectionObserver from './IntersectionObserver.astro';
     <div class="mx-auto flex w-full flex-col">
       <div class="grid grid-cols-1 border-t border-white sm:grid-cols-2">
         <BenefitCard
-          imageUrl="/src/assets/images/benefits_01.jpg"
+          imageSrc={Benefits01}
           title="現地渡航一切不要"
           description="日本にいながらすべての手続きが完了。渡航費用・時間を大幅削減"
           delay="0.1s"
           class="border-b border-white sm:border-r sm:border-white"
         />
         <BenefitCard
-          imageUrl="/src/assets/images/benefits_02.jpg"
+          imageSrc={Benefits02}
           title="確実な預金回収"
           description="凍結口座も州政府移管預金も、あなたの日本口座へ確実に送金"
           delay="0.2s"
           class="border-b border-white"
         />
         <BenefitCard
-          imageUrl="/src/assets/images/benefits_03.jpg"
+          imageSrc={Benefits03}
           title="完全日本語対応"
           description="英語書類の翻訳から銀行との交渉まで、すべて日本語でサポート"
           delay="0.3s"
           class="border-b border-white sm:border-r sm:border-white"
         />
         <BenefitCard
-          imageUrl="/src/assets/images/benefits_04.jpg"
+          imageSrc={Benefits04}
           title="スピード解決"
           description="豊富な実績による効率的な手続きで、最短1ヶ月で問題解決"
           delay="0.4s"
