@@ -21,10 +21,10 @@ const { imageSrc, title, description, animationDelay = '0s' } = Astro.props;
     <div class="flex-1"></div>
     <div class="p-4">
       <h3
-        class="mb-2 text-sm font-bold text-white sm:text-base"
+        class="mb-2 text-lg font-bold text-white sm:text-xl"
         set:html={title}
       />
-      <p class="text-xs leading-relaxed text-gray-200 sm:text-sm">
+      <p class="text-base leading-relaxed text-gray-200">
         {description}
       </p>
     </div>

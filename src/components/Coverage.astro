@@ -40,7 +40,7 @@ const countries = {
     >
       <h2
         id="coverage-heading"
-        class="from-primary-500 to-primary-700 mb-8 bg-gradient-to-r bg-clip-text text-center text-2xl font-bold text-transparent sm:mb-12 sm:text-4xl lg:text-5xl"
+        class="from-primary-500 to-primary-700 mb-8 bg-gradient-to-r bg-clip-text text-center text-[1.4rem] font-bold text-transparent sm:mb-12 sm:text-4xl lg:text-5xl"
       >
         主なサポート対象国
       </h2>
@@ -53,20 +53,20 @@ const countries = {
           class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
         >
           <article
-            class="h-full rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md"
+            class="h-full rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md sm:p-10"
           >
             <h3
-              class="mb-4 flex items-center gap-3 text-xl font-bold text-gray-800"
+              class="mb-6 flex items-center gap-3 text-xl font-bold text-gray-800 sm:text-2xl"
             >
               北米・欧州
             </h3>
             <div class="space-y-3">
-              <div class="flex flex-wrap gap-2">
+              <div class="flex flex-wrap gap-3">
                 {
                   countries.northAmerica.map(country => (
                     <div class="flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-2">
-                      <Icon name={country.icon} class="h-4 w-6" />
-                      <span class="text-sm font-medium text-gray-700">
+                      <Icon name={country.icon} class="h-6 w-8" />
+                      <span class="text-base font-medium text-gray-700">
                         {country.name}
                       </span>
                     </div>
@@ -77,8 +77,8 @@ const countries = {
                 {
                   countries.europe.map(country => (
                     <div class="flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-2">
-                      <Icon name={country.icon} class="h-4 w-6" />
-                      <span class="text-xs font-medium text-gray-700">
+                      <Icon name={country.icon} class="h-6 w-8" />
+                      <span class="text-base font-medium text-gray-700">
                         {country.name}
                       </span>
                     </div>
@@ -93,19 +93,19 @@ const countries = {
           class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
         >
           <article
-            class="h-full rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md"
+            class="h-full rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md sm:p-10"
           >
             <h3
-              class="mb-4 flex items-center gap-3 text-xl font-bold text-gray-800"
+              class="mb-6 flex items-center gap-3 text-xl font-bold text-gray-800 sm:text-2xl"
             >
               アジア
             </h3>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-3">
               {
                 countries.asia.map(country => (
                   <div class="flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-2">
-                    <Icon name={country.icon} class="h-4 w-6" />
-                    <span class="text-xs font-medium text-gray-700">
+                    <Icon name={country.icon} class="h-6 w-8" />
+                    <span class="text-base font-medium text-gray-700">
                       {country.name}
                     </span>
                   </div>
@@ -121,17 +121,17 @@ const countries = {
         class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
       >
         <article
-          class="rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md"
+          class="rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md sm:p-10"
         >
           <h3
-            class="mb-4 flex items-center gap-3 text-xl font-bold text-gray-800"
+            class="mb-6 flex items-center gap-3 text-xl font-bold text-gray-800 sm:text-2xl"
           >
             主な対応可能銀行
           </h3>
-          <dl class="grid gap-4 text-xs sm:grid-cols-2">
+          <dl class="grid gap-8 text-base sm:grid-cols-2">
             <div>
               <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
-                <Icon name="flag:us-4x3" class="h-3 w-4" />
+                <Icon name="flag:us-4x3" class="h-6 w-8" />
                 アメリカ
               </dt>
               <dd class="pl-6 text-gray-600">
@@ -140,7 +140,7 @@ const countries = {
             </div>
             <div>
               <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
-                <Icon name="flag:gb-4x3" class="h-3 w-4" />
+                <Icon name="flag:gb-4x3" class="h-6 w-8" />
                 イギリス
               </dt>
               <dd class="pl-6 text-gray-600">
@@ -150,42 +150,42 @@ const countries = {
             </div>
             <div>
               <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
-                <Icon name="flag:au-4x3" class="h-3 w-4" />
+                <Icon name="flag:au-4x3" class="h-6 w-8" />
                 オーストラリア
               </dt>
               <dd class="pl-6 text-gray-600">ANZ、NAB、Commonwealth Bank</dd>
             </div>
             <div>
               <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
-                <Icon name="flag:ca-4x3" class="h-3 w-4" />
+                <Icon name="flag:ca-4x3" class="h-6 w-8" />
                 カナダ
               </dt>
               <dd class="pl-6 text-gray-600">BMO、TD Bank、RBC、CIBC</dd>
             </div>
             <div>
               <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
-                <Icon name="flag:sg-4x3" class="h-3 w-4" />
+                <Icon name="flag:sg-4x3" class="h-6 w-8" />
                 シンガポール
               </dt>
               <dd class="pl-6 text-gray-600">DBS、UOB、OCBC</dd>
             </div>
             <div>
               <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
-                <Icon name="flag:id-4x3" class="h-3 w-4" />
+                <Icon name="flag:id-4x3" class="h-6 w-8" />
                 インドネシア
               </dt>
               <dd class="pl-6 text-gray-600">BRI、Mandiri</dd>
             </div>
             <div>
               <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
-                <Icon name="flag:my-4x3" class="h-3 w-4" />
+                <Icon name="flag:my-4x3" class="h-6 w-8" />
                 マレーシア
               </dt>
               <dd class="pl-6 text-gray-600">Maybank、CIMB</dd>
             </div>
             <div>
               <dt class="mb-2 flex items-center gap-2 font-bold text-gray-800">
-                <Icon name="mdi:earth" class="h-3 w-4 text-blue-500" />
+                <Icon name="mdi:earth" class="h-6 w-8 text-blue-500" />
                 欧州その他
               </dt>
               <dd class="pl-6 text-gray-600">
@@ -201,8 +201,10 @@ const countries = {
       class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
     >
       <div class="mt-2 text-center sm:mt-4">
-        <p class="text-xs text-gray-600">※その他マイナーな銀行にも対応可能。</p>
-        <p class="text-xs font-medium text-gray-800">
+        <p class="text-sm text-gray-600 sm:text-base">
+          ※その他マイナーな銀行にも対応可能。
+        </p>
+        <p class="text-sm font-medium text-gray-800 sm:text-base">
           現地渡航するより安く、
           <br class="inline sm:hidden" />
           手間なく口座解約と残高送金をサポートします。

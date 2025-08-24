@@ -1,5 +1,6 @@
 ---
 // Pricing section component
+import { Icon } from 'astro-icon/components';
 import IntersectionObserver from './IntersectionObserver.astro';
 ---
 
@@ -15,7 +16,7 @@ import IntersectionObserver from './IntersectionObserver.astro';
     >
       <h2
         id="pricing-heading"
-        class="mb-6 text-center text-2xl font-bold text-slate-800 sm:mb-12 sm:text-4xl lg:text-5xl"
+        class="mb-6 text-center text-[1.4rem] font-bold text-slate-800 sm:mb-12 sm:text-4xl lg:text-5xl"
       >
         サポート料金
       </h2>
@@ -31,13 +32,13 @@ import IntersectionObserver from './IntersectionObserver.astro';
             <tr>
               <th
                 scope="col"
-                class="px-3 py-3 text-left text-sm font-semibold text-white sm:px-8 sm:py-6 sm:text-lg"
+                class="px-3 py-3 text-left text-base font-semibold text-white sm:px-8 sm:py-6 sm:text-xl"
               >
                 サービス内容
               </th>
               <th
                 scope="col"
-                class="px-3 py-3 text-left text-sm font-semibold text-white sm:px-8 sm:py-6 sm:text-lg"
+                class="px-3 py-3 text-left text-base font-semibold text-white sm:px-8 sm:py-6 sm:text-xl"
               >
                 料金
               </th>
@@ -47,9 +48,9 @@ import IntersectionObserver from './IntersectionObserver.astro';
             <tr class="transition-colors duration-200 hover:bg-slate-50">
               <th
                 scope="row"
-                class="px-3 py-3 text-left text-sm font-bold text-slate-800 sm:px-8 sm:py-6 sm:text-base"
+                class="px-3 py-3 text-left text-base font-bold text-slate-800 sm:px-8 sm:py-6 sm:text-lg"
               >
-                個人口座解約手続サポート
+                個人口座解約手続<br class="inline sm:hidden" />サポート
               </th>
               <td
                 itemprop="price"
@@ -63,9 +64,9 @@ import IntersectionObserver from './IntersectionObserver.astro';
             <tr class="transition-colors duration-200 hover:bg-slate-50">
               <th
                 scope="row"
-                class="px-3 py-4 text-left text-sm font-bold text-slate-800 sm:px-8 sm:py-6 sm:text-base"
+                class="px-3 py-4 text-left text-base font-bold text-slate-800 sm:px-8 sm:py-6 sm:text-lg"
               >
-                相続口座解約手続サポート
+                相続口座解約手続<br class="inline sm:hidden" />サポート
               </th>
               <td
                 class="text-primary-600 px-3 py-4 text-sm font-semibold sm:px-8 sm:py-6 sm:text-lg"
@@ -78,9 +79,9 @@ import IntersectionObserver from './IntersectionObserver.astro';
             <tr class="transition-colors duration-200 hover:bg-slate-50">
               <th
                 scope="row"
-                class="px-3 py-4 text-left text-sm font-bold text-slate-800 sm:px-8 sm:py-6 sm:text-base"
+                class="px-3 py-4 text-left text-base font-bold text-slate-800 sm:px-8 sm:py-6 sm:text-lg"
               >
-                法人口座解約手続サポート
+                法人口座解約手続<br class="inline sm:hidden" />サポート
               </th>
               <td
                 class="text-primary-600 px-3 py-4 text-sm font-semibold sm:px-8 sm:py-6 sm:text-lg"
@@ -102,11 +103,35 @@ import IntersectionObserver from './IntersectionObserver.astro';
         <p
           class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800"
         >
-          <small class="text-sm">
+          <small class="text-base">
             ※書類認証費用や国際郵便料金などの実費は別途必要となります。
           </small>
         </p>
       </div>
+    </IntersectionObserver>
+
+    <IntersectionObserver
+      class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+    >
+      <aside
+        role="note"
+        aria-label="返金対象外のケース"
+        class="mx-auto mt-6 max-w-6xl text-slate-600"
+      >
+        <p class="mb-2 flex items-start gap-2 text-xs sm:text-sm">
+          <Icon
+            name="mdi:information-outline"
+            class="mt-0.5 h-4 w-4 shrink-0 text-slate-400"
+          />
+          <span class="font-medium">返金対象とならない場合</span>
+        </p>
+        <ul class="ml-6 list-disc text-[0.8rem] leading-relaxed sm:text-sm">
+          <li>必要情報や書類をお客様からご提供いただけない場合</li>
+          <li>対象者が金融ブラックリスト入りしている場合</li>
+          <li>ご申告のご預金自体がない場合</li>
+          <li>その他、お客様事由が原因の場合</li>
+        </ul>
+      </aside>
     </IntersectionObserver>
   </div>
 </section>

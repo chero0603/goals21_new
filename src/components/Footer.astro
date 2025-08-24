@@ -1,7 +1,68 @@
 ---
-// Footer.astro - フッター情報と連絡先情報を含むコンポーネント
+// Footer.astro - 会社情報を含むフッター
 ---
 
-<footer class="pb-8 text-center text-xs sm:pb-12 sm:text-sm">
-  <p class="text-slate-600">&copy; 海外口座解約手続サポート</p>
+<footer class="border-t border-slate-200 bg-white">
+  <div class="mx-auto max-w-6xl px-4 py-6 sm:py-8">
+    <nav
+      class="mb-4 flex items-center justify-center gap-6 text-xs text-slate-600 sm:text-sm"
+    >
+      <a
+        href="/goals21/about#tokushoho"
+        class="hover:text-slate-900 hover:underline"
+      >
+        特定商取引法に基づく表記
+      </a>
+      <span class="text-slate-300">|</span>
+      <a
+        href="/goals21/about#privacy"
+        class="hover:text-slate-900 hover:underline"
+      >
+        プライバシーポリシー
+      </a>
+    </nav>
+    <section
+      aria-labelledby="company-info-heading"
+      class="mx-auto max-w-5xl text-center"
+    >
+      <h2 id="company-info-heading" class="sr-only">会社情報</h2>
+      <ul
+        class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-slate-700 sm:text-sm"
+      >
+        <li class="flex items-center gap-1">
+          <span class="text-slate-500">会社名</span>
+          <span class="hidden text-slate-300 sm:inline">／</span>
+          <span>株式会社GOALs21</span>
+        </li>
+        <li class="flex items-center gap-1">
+          <span class="text-slate-500">住所</span>
+          <span class="hidden text-slate-300 sm:inline">／</span>
+          <span>東京都中央区日本橋3-2-14 日本橋KNビル4F</span>
+        </li>
+        <!-- sm以上でここで改行（2行目へ） -->
+        <li class="hidden w-full sm:block" aria-hidden="true"></li>
+        <li class="flex items-center gap-1">
+          <span class="text-slate-500">電話番号</span>
+          <span class="hidden text-slate-300 sm:inline">／</span>
+          <a href="tel:0352013756" class="hover:underline">03-5201-3756</a>
+        </li>
+        <li class="flex items-center gap-1">
+          <span class="text-slate-500">メール</span>
+          <span class="hidden text-slate-300 sm:inline">／</span>
+          <a href="mailto:support@gold-t.tokyo" class="hover:underline">
+            support@gold-t.tokyo
+          </a>
+        </li>
+        <li class="flex items-center gap-1">
+          <span class="text-slate-500">営業時間</span>
+          <span class="hidden text-slate-300 sm:inline">／</span>
+          <span>日本時間 9:00－18:00</span>
+        </li>
+      </ul>
+    </section>
+
+    <p class="mt-6 text-center text-xs text-slate-500 sm:text-sm">
+      &copy; {new Date().getFullYear()} 海外口座解約手続サポート
+    </p>
+  </div>
 </footer>

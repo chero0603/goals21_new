@@ -10,7 +10,7 @@ const items = [
   },
   {
     icon: 'mdi:file-sign',
-    title: '委任状（Power of Attorney）の作成',
+    title: '委任状\n（Power of Attorney）の作成',
     desc: '現地での手続きに必要な委任状を適切に準備します',
   },
   {
@@ -25,7 +25,7 @@ const items = [
   },
   {
     icon: 'mdi:bank-transfer',
-    title: '資金の送金サポート（受取先口座への移動）',
+    title: '資金の送金サポート\n（受取先口座への移動）',
     desc: 'ご指定の日本の銀行口座への確実な資金移動をサポートします',
   },
   {
@@ -46,20 +46,20 @@ const items = [
 ];
 ---
 
-<ul class="text-primary-800 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+<ul class="text-primary-800 grid gap-x-10 gap-y-10 sm:grid-cols-2">
   {
     items.map(item => (
       <li class="flex items-start gap-3">
-        <Icon 
-          name={item.icon} 
+        <Icon
+          name={item.icon}
           class="text-primary-400 mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center text-xl"
         />
         <div>
-          <>
-            <span class="font-semibold">{item.title}</span>
-            <br />
-          </>
-          <span class="text-sm">{item.desc}</span>
+          <span class="text-lg font-semibold whitespace-pre-line sm:text-xl sm:whitespace-normal">
+            {item.title}
+          </span>
+          <br />
+          <span class="inline-block pt-3 text-base">{item.desc}</span>
         </div>
       </li>
     ))

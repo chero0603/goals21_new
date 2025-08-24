@@ -1,0 +1,24 @@
+---
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import PrivacyPolicy from '@/components/legal/PrivacyPolicy.astro';
+import TokushohoTable from '@/components/legal/TokushohoTable.astro';
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="当サイトについて | 海外口座解約手続サポート">
+  <Header />
+
+  <div class="mx-auto max-w-6xl px-4 pt-32 pb-16 sm:px-6">
+    <div class="grid grid-cols-1 gap-16">
+      <div id="tokushoho">
+        <TokushohoTable />
+      </div>
+      <div id="privacy" class="border-t border-slate-200 pt-8">
+        <PrivacyPolicy />
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
