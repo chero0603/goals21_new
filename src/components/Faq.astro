@@ -1,6 +1,68 @@
 ---
-import { Icon } from 'astro-icon/components';
 import IntersectionObserver from './IntersectionObserver.astro';
+import FaqItem from './FaqItem.astro';
+
+// FAQ データの配列
+const faqData = [
+  {
+    question:
+      '頻繁にインターネットバンキングのレイアウトが変わって困っている。',
+    answer:
+      '是非、継続管理サポートをご活用ください。都度サポートさせて頂きます。',
+  },
+  {
+    question: '個人情報の提出が必要なんですか？',
+    answer:
+      '必須となっておりますので、秘密保持契約を締結後、サポートをさせて頂きます。',
+  },
+  {
+    question: '地方に住んでいて、伺うことが難しい。',
+    answer: 'お電話やオンラインでもサポートをしております。',
+  },
+  {
+    question: '口座を解約したい。',
+    answer: '口座解約のお手続きを行います。',
+  },
+  {
+    question:
+      'パスワードを間違えてしまい、インターネットバンキングへのログインがロックされてしまった',
+    answer: 'ロック解除のお手続きをサポート致します。',
+  },
+  {
+    question: '登録時に住所を現地にしていますが、大丈夫ですか？',
+    answer:
+      '居住証明ができないと、遠隔でのお手続きができないことがあります。まずはお問い合わせください。',
+  },
+  {
+    question: '日本在住ではありませんが、サポートの依頼は可能でしょうか？',
+    answer: 'お電話やオンラインでご対応致します。',
+  },
+  {
+    question: '口座開設時に提出した、メールアドレスや電話番号が今は使えない。',
+    answer: '登録情報変更のお手続きを行います。',
+  },
+  {
+    question: 'カードの有効期限が切れている。',
+    answer: '再発行手続きを行います。',
+  },
+  {
+    question: '口座開設から時間が経ちすぎて登録情報がわからない。',
+    answer: '銀行に架電して、確認しながらお手続きをサポート致します。',
+  },
+  {
+    question: 'キャッシュカードをなくしてしまった。',
+    answer: '再発行手続きを行います。',
+  },
+  {
+    question: '凍結解除にはどれぐらいの時間を要しますか？',
+    answer: '口座状況によりますが、１日～１０日ほどとお考えください。',
+  },
+  {
+    question: '現地にいかなくても、手続きは可能ですか？',
+    answer:
+      '現地渡航しなければならないケースもありますが、ほとんどのお手続きは日本国内からお手続きが可能です。',
+  },
+];
 ---
 
 <section
@@ -30,525 +92,11 @@ import IntersectionObserver from './IntersectionObserver.astro';
     </IntersectionObserver>
 
     <div class="mx-auto max-w-4xl space-y-4">
-      <!-- FAQ Item 1 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              頻繁にインターネットバンキングのレイアウトが変わって困っている。
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                是非、継続管理サポートをご活用ください。都度サポートさせて頂きます。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 2 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              個人情報の提出が必要なんですか？
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                必須となっておりますので、秘密保持契約を締結後、サポートをさせて頂きます。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 3 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              地方に住んでいて、伺うことが難しい。
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                お電話やオンラインでもサポートをしております。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 4 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              口座を解約したい。
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                口座解約のお手続きを行います。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 5 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              パスワードを間違えてしまい、インターネットバンキングへのログインがロックされてしまった
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                ロック解除のお手続きをサポート致します。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 6 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              登録時に住所を現地にしていますが、大丈夫ですか？
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                居住証明ができないと、遠隔でのお手続きができないことがあります。まずはお問い合わせください。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 7 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              日本在住ではありませんが、サポートの依頼は可能でしょうか？
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                お電話やオンラインでご対応致します。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 8 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              口座開設時に提出した、メールアドレスや電話番号が今は使えない。
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                登録情報変更のお手続きを行います。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 9 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              カードの有効期限が切れている。
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                再発行手続きを行います。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 10 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              口座開設から時間が経ちすぎて登録情報がわからない。
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                銀行に架電して、確認しながらお手続きをサポート致します。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 11 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              キャッシュカードをなくしてしまった。
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                再発行手続きを行います。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 12 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              凍結解除にはどれぐらいの時間を要しますか？
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 py-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                口座状況によりますが、１日～１０日ほどとお考えください。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
-
-      <!-- FAQ Item 13 -->
-      <IntersectionObserver
-        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
-      >
-        <div
-          class="faq-item rounded-lg border border-white/50 bg-white/80 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md"
-          itemscope
-          itemtype="https://schema.org/Question"
-        >
-          <button
-            class="faq-question focus:ring-primary-500 flex w-full items-center justify-between p-6 text-left focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            type="button"
-            aria-expanded="false"
-          >
-            <h3
-              class="text-lg font-semibold text-gray-900 sm:text-xl"
-              itemprop="name"
-            >
-              現地にいかなくても、手続きは可能ですか？
-            </h3>
-            <Icon
-              name="mdi:chevron-down"
-              class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
-            />
-          </button>
-          <div
-            class="faq-answer overflow-hidden transition-all duration-300"
-            style="max-height: 0;"
-            itemscope
-            itemtype="https://schema.org/Answer"
-          >
-            <div class="px-6 pb-6" itemprop="text">
-              <p class="leading-relaxed text-gray-700">
-                現地渡航しなければならないケースもありますが、ほとんどのお手続きは日本国内からお手続きが可能です。
-              </p>
-            </div>
-          </div>
-        </div>
-      </IntersectionObserver>
+      {
+        faqData.map(faq => (
+          <FaqItem question={faq.question} answer={faq.answer} />
+        ))
+      }
     </div>
 
     <!-- CTA Section -->
