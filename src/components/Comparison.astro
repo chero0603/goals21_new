@@ -13,260 +13,105 @@ import IntersectionObserver from './IntersectionObserver.astro';
     >
       <h2
         id="comparison-heading"
-        class="mb-8 text-center text-[1.4rem] font-bold text-slate-800 sm:mb-12 sm:text-4xl lg:text-5xl"
+        class="mb-4 text-center text-[1.4rem] font-bold text-slate-800 sm:mb-8 sm:text-4xl lg:text-5xl"
       >
-        他の選択肢との比較
+        自己対応より圧倒的に効率的
       </h2>
     </IntersectionObserver>
 
-    <div class="overflow-x-auto md:overflow-x-visible">
-      <div class="flex md:grid md:grid-cols-4">
-        <!-- 当サービス -->
+    <div class="mx-auto max-w-4xl">
+      <!-- メインメッセージ -->
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+      >
+        <div class="mb-12 text-center">
+          <p class="text-base text-slate-600 sm:text-2xl">
+            面倒な手続きはすべてお任せください。<br />
+            あなたは結果を待つだけ。
+          </p>
+        </div>
+      </IntersectionObserver>
+
+      <!-- 3つのポイント -->
+      <div class="grid gap-6 md:grid-cols-3 md:gap-8">
+        <!-- 安い -->
         <IntersectionObserver
           class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
         >
-          <div
-            class="from-primary-50 to-primary-100 relative flex h-full w-44 flex-shrink-0 flex-col overflow-hidden bg-gradient-to-b shadow-xl md:w-auto md:flex-shrink"
-          >
+          <div class="text-center">
             <div
-              class="from-primary-600 to-primary-700 relative flex h-24 items-center justify-center bg-gradient-to-r px-4 py-4 sm:h-28 sm:px-6 sm:py-6"
+              class="from-primary-500 to-primary-600 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r"
             >
-              <h3
-                class="flex flex-col items-center text-center text-xl font-bold text-white sm:text-2xl"
-              >
-                当サービス
-              </h3>
-              <!-- おすすめバッジ - ヘッダーの下部に50%はみ出して配置 -->
-              <div
-                class="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 translate-y-1/2 transform sm:bottom-0"
-              >
-                <span
-                  class="text-primary-700 rounded-full bg-yellow-300 px-3 py-1 text-sm font-semibold"
-                >
-                  おすすめ
-                </span>
-              </div>
+              <span class="text-3xl">💰</span>
             </div>
-            <div class="flex flex-1 flex-col p-4 sm:p-6">
-              <div class="flex h-26 flex-col justify-center py-2 text-center">
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  費用
-                </div>
-                <div class="text-primary-700 text-xl font-bold sm:text-2xl">
-                  22万円〜
-                </div>
-              </div>
-              <div
-                class="border-primary-200 flex h-26 flex-col justify-center border-t py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  期間
-                </div>
-                <div class="text-xl font-bold text-green-600 sm:text-2xl">
-                  1-6ヶ月
-                </div>
-              </div>
-              <div
-                class="border-primary-200 flex h-26 flex-col justify-center border-t py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  成功率
-                </div>
-                <div class="text-xl font-bold text-green-600 sm:text-2xl">
-                  95%以上
-                </div>
-              </div>
-              <div
-                class="border-primary-200 flex h-26 flex-col justify-center border-t py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  負担
-                </div>
-                <div class="text-xl font-bold text-green-600 sm:text-2xl">
-                  なし
-                </div>
-              </div>
+            <h3 class="text-primary-700 mb-2 text-2xl font-bold">安い</h3>
+            <p class="mb-3 text-lg text-slate-600">
+              渡航費や宿泊費を考えると<br />
+              圧倒的にお得
+            </p>
+            <div class="text-3xl font-bold text-orange-500">22万円〜</div>
+            <div class="mt-1 text-base text-slate-500">
+              ※現地渡航なら30-50万円
             </div>
           </div>
         </IntersectionObserver>
 
-        <!-- 自力で対応 -->
+        <!-- 早い -->
         <IntersectionObserver
           class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
         >
-          <div
-            class="flex h-full w-44 flex-shrink-0 flex-col overflow-hidden bg-white shadow-lg md:w-auto md:flex-shrink"
-          >
+          <div class="text-center">
             <div
-              class="flex h-24 items-center justify-center bg-slate-100 px-4 py-4 sm:h-28 sm:px-6 sm:py-6"
+              class="from-primary-500 to-primary-600 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r"
             >
-              <h3
-                class="text-center text-xl font-semibold text-slate-700 sm:text-2xl"
-              >
-                自力で対応
-              </h3>
+              <span class="text-3xl">⚡</span>
             </div>
-            <div class="flex flex-1 flex-col p-4 sm:p-6">
-              <div class="flex h-26 flex-col justify-center py-2 text-center">
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  費用
-                </div>
-                <div class="text-xl font-bold text-slate-700 sm:text-2xl">
-                  実費のみ
-                </div>
-              </div>
-              <div
-                class="flex h-26 flex-col justify-center border-t border-slate-200 py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  期間
-                </div>
-                <div class="text-xl font-bold text-red-600 sm:text-2xl">
-                  1年以上
-                </div>
-              </div>
-              <div
-                class="flex h-26 flex-col justify-center border-t border-slate-200 py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-sm font-medium text-slate-600">
-                  成功率
-                </div>
-                <div class="text-xl font-bold text-red-600 sm:text-2xl">
-                  30%程度
-                </div>
-              </div>
-              <div
-                class="flex h-26 flex-col justify-center border-t border-slate-200 py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  負担
-                </div>
-                <div class="text-xl font-bold text-red-600 sm:text-2xl">
-                  非常に大
-                </div>
-              </div>
-            </div>
+            <h3 class="text-primary-700 mb-2 text-2xl font-bold">早い</h3>
+            <p class="mb-3 text-lg text-slate-600">
+              専門知識とノウハウで<br />
+              スピーディーに解決
+            </p>
+            <div class="text-3xl font-bold text-orange-500">1-6ヶ月</div>
+            <div class="mt-1 text-base text-slate-500">※自力なら1年以上</div>
           </div>
         </IntersectionObserver>
 
-        <!-- 現地渡航 -->
+        <!-- 楽 -->
         <IntersectionObserver
           class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
         >
-          <div
-            class="flex h-full w-44 flex-shrink-0 flex-col overflow-hidden bg-white shadow-lg md:w-auto md:flex-shrink"
-          >
+          <div class="text-center">
             <div
-              class="flex h-24 items-center justify-center bg-slate-100 px-4 py-4 sm:h-28 sm:px-6 sm:py-6"
+              class="from-primary-500 to-primary-600 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r"
             >
-              <h3
-                class="text-center text-xl font-semibold text-slate-700 sm:text-2xl"
-              >
-                現地渡航
-              </h3>
+              <span class="text-3xl">😌</span>
             </div>
-            <div class="flex flex-1 flex-col p-4 sm:p-6">
-              <div class="flex h-26 flex-col justify-center py-2 text-center">
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  費用
-                </div>
-                <div class="text-xl font-bold text-orange-600 sm:text-2xl">
-                  30-50万円
-                </div>
-              </div>
-              <div
-                class="flex h-26 flex-col justify-center border-t border-slate-200 py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  期間
-                </div>
-                <div class="text-xl font-bold text-orange-600 sm:text-2xl">
-                  1週間+準備期間
-                </div>
-              </div>
-              <div
-                class="flex h-26 flex-col justify-center border-t border-slate-200 py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-sm font-medium text-slate-600">
-                  成功率
-                </div>
-                <div class="text-xl font-bold text-orange-600 sm:text-2xl">
-                  70%程度
-                </div>
-              </div>
-              <div
-                class="flex h-26 flex-col justify-center border-t border-slate-200 py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  負担
-                </div>
-                <div class="text-xl font-bold text-orange-600 sm:text-2xl">
-                  大
-                </div>
-              </div>
-            </div>
-          </div>
-        </IntersectionObserver>
-
-        <!-- 放置継続 -->
-        <IntersectionObserver
-          class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
-        >
-          <div
-            class="flex h-full w-44 flex-shrink-0 flex-col overflow-hidden bg-white shadow-lg md:w-auto md:flex-shrink"
-          >
-            <div
-              class="flex h-24 items-center justify-center bg-slate-100 px-4 py-4 sm:h-28 sm:px-6 sm:py-6"
-            >
-              <h3
-                class="text-center text-xl font-semibold text-slate-700 sm:text-2xl"
-              >
-                放置継続
-              </h3>
-            </div>
-            <div class="flex flex-1 flex-col p-4 sm:p-6">
-              <div class="flex h-26 flex-col justify-center py-2 text-center">
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  費用
-                </div>
-                <div class="text-xl font-bold text-red-600 sm:text-2xl">
-                  維持費累積
-                </div>
-              </div>
-              <div
-                class="flex h-26 flex-col justify-center border-t border-slate-200 py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  期間
-                </div>
-                <div class="text-xl font-bold text-slate-600 sm:text-2xl">
-                  -
-                </div>
-              </div>
-              <div
-                class="flex h-26 flex-col justify-center border-t border-slate-200 py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-sm font-medium text-slate-600">
-                  成功率
-                </div>
-                <div class="text-xl font-bold text-red-600 sm:text-2xl">
-                  預金消失リスク
-                </div>
-              </div>
-              <div
-                class="flex h-26 flex-col justify-center border-t border-slate-200 py-2 pt-4 text-center"
-              >
-                <div class="mb-2 text-base font-medium text-slate-600">
-                  負担
-                </div>
-                <div class="text-xl font-bold text-red-600 sm:text-2xl">
-                  将来的に増大
-                </div>
-              </div>
-            </div>
+            <h3 class="text-primary-700 mb-2 text-2xl font-bold">楽</h3>
+            <p class="mb-3 text-lg text-slate-600">
+              面倒な手続きや書類作成は<br />
+              すべて代行
+            </p>
+            <div class="text-3xl font-bold text-orange-500">お任せ</div>
+            <div class="mt-1 text-base text-slate-500">※あなたの負担はゼロ</div>
           </div>
         </IntersectionObserver>
       </div>
+
+      <!-- 追加メッセージ -->
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+      >
+        <div class="mt-12 text-center">
+          <div class="bg-primary-50 border-primary-200 rounded-lg border p-6">
+            <p class="text-primary-700 mb-2 text-xl font-semibold">
+              成功率95%以上の実績
+            </p>
+            <p class="text-lg text-slate-600">
+              豊富な経験と専門知識で、確実にお手続きを完了いたします。
+            </p>
+          </div>
+        </div>
+      </IntersectionObserver>
     </div>
   </div>
 </section>

@@ -11,22 +11,42 @@ const { imageSrc, title, description, animationDelay = '0s' } = Astro.props;
 ---
 
 <article
-  class="relative aspect-[16/9] overflow-hidden bg-gray-100 bg-cover bg-center transition-all duration-300"
-  style={`background-image: url(${imageSrc.src}); animation-delay: ${animationDelay};`}
+  class="group relative flex flex-1 items-center gap-6 overflow-hidden border-l-4 border-transparent bg-white/80 p-6 backdrop-blur-sm transition-all duration-500 hover:border-l-blue-500 hover:bg-white hover:shadow-2xl hover:shadow-blue-500/10"
+  style={`animation-delay: ${animationDelay};`}
   itemscope
   itemtype="https://schema.org/ListItem"
 >
-  <div class="absolute inset-0 bg-black/60"></div>
-  <div class="relative flex h-full flex-col">
-    <div class="flex-1"></div>
-    <div class="p-4">
-      <h3
-        class="mb-2 text-lg font-bold text-white sm:text-xl"
-        set:html={title}
-      />
-      <p class="text-base leading-relaxed text-gray-200">
-        {description}
-      </p>
-    </div>
+  <!-- グラデーション背景 -->
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-50/30 to-purple-50/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+  >
+  </div>
+
+  <!-- アイコンサイズの画像 -->
+  <div class="relative z-10 flex-shrink-0">
+    <img
+      src={imageSrc.src}
+      alt=""
+      class="h-20 w-20 object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110 sm:h-24 sm:w-24"
+    />
+  </div>
+
+  <!-- テキストコンテンツ -->
+  <div class="relative z-10 min-w-0 flex-1">
+    <h3
+      class="mb-2 text-xl font-bold tracking-tight text-gray-900 transition-all duration-500 group-hover:text-blue-900 sm:text-2xl lg:text-3xl"
+      set:html={title}
+    />
+    <p
+      class="text-lg leading-relaxed text-gray-600 transition-all duration-500 group-hover:text-gray-700 sm:text-xl"
+    >
+      {description}
+    </p>
+  </div>
+
+  <!-- 右端のアクセント -->
+  <div
+    class="absolute top-0 right-0 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-500 opacity-0 transition-all duration-500 group-hover:opacity-100"
+  >
   </div>
 </article>
