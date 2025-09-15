@@ -1,1 +1,4 @@
-console.log('IntersectionObserver debug:', document.querySelectorAll('.intersection-observer').length);
+console.log(
+  "IntersectionObserver debug:",
+  document.querySelectorAll(".intersection-observer").length,
+);

@@ -79,8 +79,9 @@
 
   & .animate-order-child:nth-child(n) {
     animation-delay: calc(
-      var(--animate-base-delay) * var(--child-index, 1) +
-        var(--animate-offset, 0ms)
+      var(--animate-base-delay) *
+      var(--child-index, 1) +
+      var(--animate-offset, 0ms)
     );
   }
 }
@@ -210,8 +211,9 @@
 
   & .transition-order-child:nth-child(n) {
     transition-delay: calc(
-      var(--transition-base-delay) * var(--child-index, 1) +
-        var(--transition-offset, 0ms)
+      var(--transition-base-delay) *
+      var(--child-index, 1) +
+      var(--transition-offset, 0ms)
     );
   }
 }

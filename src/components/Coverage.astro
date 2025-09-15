@@ -1,31 +1,31 @@
 ---
 // Coverage section component
-import IntersectionObserver from '@/components/IntersectionObserver.astro';
-import { Icon } from 'astro-icon/components';
+import IntersectionObserver from "@/components/IntersectionObserver.astro";
+import { Icon } from "astro-icon/components";
 
 // 国とアイコンのマッピング
 const countries = {
   northAmerica: [
-    { name: 'アメリカ', icon: 'flag:us-4x3' },
-    { name: 'カナダ', icon: 'flag:ca-4x3' },
+    { name: "アメリカ", icon: "flag:us-4x3" },
+    { name: "カナダ", icon: "flag:ca-4x3" },
   ],
   europe: [
-    { name: 'イギリス', icon: 'flag:gb-4x3' },
-    { name: 'オーストラリア', icon: 'flag:au-4x3' },
-    { name: 'オランダ', icon: 'flag:nl-4x3' },
-    { name: 'フランス', icon: 'flag:fr-4x3' },
-    { name: 'ドイツ', icon: 'flag:de-4x3' },
-    { name: 'ジョージア', icon: 'flag:ge-4x3' },
-    { name: 'スイス', icon: 'flag:ch-4x3' },
-    { name: 'リヒテンシュタイン', icon: 'flag:li-4x3' },
+    { name: "イギリス", icon: "flag:gb-4x3" },
+    { name: "オーストラリア", icon: "flag:au-4x3" },
+    { name: "オランダ", icon: "flag:nl-4x3" },
+    { name: "フランス", icon: "flag:fr-4x3" },
+    { name: "ドイツ", icon: "flag:de-4x3" },
+    { name: "ジョージア", icon: "flag:ge-4x3" },
+    { name: "スイス", icon: "flag:ch-4x3" },
+    { name: "リヒテンシュタイン", icon: "flag:li-4x3" },
   ],
   asia: [
-    { name: '香港', icon: 'flag:hk-4x3' },
-    { name: 'シンガポール', icon: 'flag:sg-4x3' },
-    { name: 'インドネシア', icon: 'flag:id-4x3' },
-    { name: 'マレーシア', icon: 'flag:my-4x3' },
-    { name: 'カンボジア', icon: 'flag:kh-4x3' },
-    { name: '韓国', icon: 'flag:kr-4x3' },
+    { name: "香港", icon: "flag:hk-4x3" },
+    { name: "シンガポール", icon: "flag:sg-4x3" },
+    { name: "インドネシア", icon: "flag:id-4x3" },
+    { name: "マレーシア", icon: "flag:my-4x3" },
+    { name: "カンボジア", icon: "flag:kh-4x3" },
+    { name: "韓国", icon: "flag:kr-4x3" },
   ],
 };
 ---

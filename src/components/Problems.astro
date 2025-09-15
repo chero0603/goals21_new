@@ -5,6 +5,7 @@ import Thumbnail02 from '@/assets/images/thumb_problems_02.jpg';
 import Thumbnail03 from '@/assets/images/thumb_problems_03.jpg';
 import Thumbnail04 from '@/assets/images/thumb_problems_04.jpg';
 import Thumbnail05 from '@/assets/images/thumb_problems_05.jpg';
+import Thumbnail06 from '@/assets/images/thumb_problems_06.jpg';
 import IntersectionObserver from '@/components/IntersectionObserver.astro';
 import ProblemCard from '@/components/ProblemCard.astro';
 import { Image } from 'astro:assets';
@@ -120,6 +121,23 @@ import { Image } from 'astro:assets';
           />
           <Fragment slot="title">相続で発覚した海外口座</Fragment>
           <p>亡くなった親族が海外口座を持っていたことが判明した。</p>
+        </ProblemCard>
+      </IntersectionObserver>
+
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 animate-order-child opacity-0"
+      >
+        <ProblemCard>
+          <Image
+            slot="image"
+            src={Thumbnail06}
+            alt="法人解散後の銀行口座"
+            class="aspect-video w-full object-cover"
+            loading="lazy"
+            format="webp"
+          />
+          <Fragment slot="title">法人解散後の銀行口座</Fragment>
+          <p>海外法人を解散させたが、法人の銀行口座だけ残ってしまっている。</p>
         </ProblemCard>
       </IntersectionObserver>
     </div>

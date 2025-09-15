@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components';
-import IntersectionObserver from './IntersectionObserver.astro';
+import { Icon } from "astro-icon/components";
+import IntersectionObserver from "./IntersectionObserver.astro";
 
 interface Props {
   question: string;
@@ -8,7 +8,7 @@ interface Props {
   class?: string;
 }
 
-const { question, answer, class: additionalClass = '' } = Astro.props;
+const { question, answer, class: additionalClass = "" } = Astro.props;
 ---
 
 <IntersectionObserver
@@ -33,20 +33,22 @@ const { question, answer, class: additionalClass = '' } = Astro.props;
       <div class="flex flex-shrink-0 items-center justify-center">
         <Icon
           name="mdi:chevron-down"
-          class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300"
+          class="faq-icon text-primary-500 h-6 w-6 transition-transform duration-300 data-[open=true]:rotate-180"
         />
       </div>
     </button>
     <div
-      class="faq-answer overflow-hidden transition-all duration-300"
-      style="max-height: 0;"
+      class="faq-answer grid transition-all duration-300 grid-rows-[0fr] data-[open=true]:grid-rows-[1fr]"
+      data-open="false"
       itemscope
       itemtype="https://schema.org/Answer"
     >
-      <div class="px-6 pb-6" itemprop="text">
-        <p class="leading-relaxed text-gray-700">
-          {answer}
-        </p>
+      <div class="overflow-hidden">
+        <div class="px-6 pb-6" itemprop="text">
+          <p class="leading-relaxed text-gray-700">
+            {answer}
+          </p>
+        </div>
       </div>
     </div>
   </div>

@@ -7,7 +7,9 @@ import { Image } from 'astro:assets';
   <div
     class="animate-reveal-from-left-600 relative h-[calc(100vh-3rem)] rounded-2xl bg-[url(../assets/images/hero_sm.jpg)] bg-cover bg-bottom bg-no-repeat md:h-[calc(100svh-6rem)] md:bg-[url(../assets/images/hero.jpg)] md:bg-bottom-right"
   >
-    <div class="absolute bottom-[28vh] left-0 w-full p-6 md:w-2/4 md:pl-12">
+    <div
+      class="absolute bottom-[28vh] left-0 w-full p-6 md:bottom-[20vh] md:w-2/4 md:pl-12"
+    >
       <Image
         slot="image"
         src={Title}

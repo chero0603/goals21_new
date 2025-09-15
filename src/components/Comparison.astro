@@ -26,7 +26,9 @@ import IntersectionObserver from './IntersectionObserver.astro';
       >
         <div class="mb-12 text-center">
           <p class="text-lg text-slate-600 sm:text-2xl">
-            面倒な手続きはすべてお任せください。<br />
+            面倒な手続きは
+            <br class="inline sm:hidden" />
+            すべてお任せください。<br />
             お客様は結果を待つだけ。
           </p>
         </div>
@@ -46,8 +48,8 @@ import IntersectionObserver from './IntersectionObserver.astro';
             </div>
             <h3 class="text-primary-700 mb-2 text-2xl font-bold">安い</h3>
             <p class="mb-3 text-lg text-slate-600">
-              渡航費や宿泊費を考えると<br />
-              圧倒的にお得
+              渡航費や宿泊費、<br />現地通訳費を考えると<br />
+              圧倒的にお得。<br />不備があれば<br />再度渡航のリスクも。
             </p>
             <div class="text-3xl font-bold text-orange-500">22万円〜</div>
             <div class="mt-1 text-lg text-slate-500">
@@ -110,6 +112,15 @@ import IntersectionObserver from './IntersectionObserver.astro';
               豊富な経験と専門知識で、確実にお手続きを完了いたします。
             </p>
           </div>
+        </div>
+      </IntersectionObserver>
+      <IntersectionObserver
+        class="data-[observer=true]:animate-fade-in-up-800 delay-order-child opacity-0"
+      >
+        <div class="mt-8 text-center">
+          <p class="text-lg font-bold text-slate-600 sm:text-xl">
+            その他の相談も当社の蓄積した情報をご提供します
+          </p>
         </div>
       </IntersectionObserver>
     </div>

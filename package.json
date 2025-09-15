@@ -17,14 +17,16 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format": "biome format --write .",
+    "format:check": "biome format --check .",
+    "lint": "biome lint ."
   },
   "type": "module",
   "devDependencies": {
     "@iconify/json": "^2.2.365",
     "@iconify/tailwind4": "^1.0.6",
     "astro-icon": "^1.1.5",
+    "@biomejs/biome": "^1.9.4",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14"

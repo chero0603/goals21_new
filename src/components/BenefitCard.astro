@@ -1,6 +1,6 @@
 ---
-import { cn } from '../utils/cn';
-import IntersectionObserver from './IntersectionObserver.astro';
+import { cn } from "../utils/cn";
+import IntersectionObserver from "./IntersectionObserver.astro";
 
 interface Props {
   imageSrc: ImageMetadata;
@@ -10,13 +10,7 @@ interface Props {
   class?: string;
 }
 
-const {
-  imageSrc,
-  title,
-  description,
-  delay,
-  class: additionalClass = '',
-} = Astro.props;
+const { imageSrc, title, description, delay, class: additionalClass = "" } = Astro.props;
 ---
 
 <IntersectionObserver

@@ -20,10 +20,6 @@ const faqData = [
     answer: 'お電話やオンラインでもサポートをしております。',
   },
   {
-    question: '口座を解約したい。',
-    answer: '口座解約のお手続きを行います。',
-  },
-  {
     question:
       'パスワードを間違えてしまい、インターネットバンキングへのログインがロックされてしまった',
     answer: 'ロック解除のお手続きをサポート致します。',
@@ -54,13 +50,13 @@ const faqData = [
     answer: '再発行手続きを行います。',
   },
   {
-    question: '凍結解除にはどれぐらいの時間を要しますか？',
-    answer: '口座状況によりますが、１日～１０日ほどとお考えください。',
-  },
-  {
     question: '現地にいかなくても、手続きは可能ですか？',
     answer:
       '現地渡航しなければならないケースもありますが、ほとんどのお手続きは日本国内からお手続きが可能です。',
+  },
+  {
+    question: '法人口座でもサポートはしてもらえますか？',
+    answer: 'サポート可能です。',
   },
 ];
 ---
@@ -107,10 +103,16 @@ const faqData = [
         <h3
           class="from-primary-600 to-primary-800 bg-gradient-to-r bg-clip-text text-lg font-bold text-transparent sm:text-2xl"
         >
-          その他のご質問やお困りごとがございましたら、お気軽にお問い合わせください
+          その他のご質問や
+          <br class="inline sm:hidden" />
+          お困りごとがございましたら
+          <br class="inline sm:hidden" />
+          お気軽にお問い合わせください
         </h3>
         <p class="mt-2 text-lg text-gray-600">
-          専門スタッフが丁寧にお答えいたします
+          専門スタッフが
+          <br class="inline sm:hidden" />
+          丁寧にお答えいたします
         </p>
       </div>
     </IntersectionObserver>
@@ -140,23 +142,17 @@ const faqData = [
 
             if (otherQuestion && otherAnswer && otherIcon) {
               otherQuestion.setAttribute('aria-expanded', 'false');
-              (otherAnswer as HTMLElement).style.maxHeight = '0';
-              (otherIcon as HTMLElement).style.transform = 'rotate(0deg)';
+              otherAnswer.setAttribute('data-open', 'false');
+              otherIcon.setAttribute('data-open', 'false');
             }
           }
         });
 
-        // Toggle current item
-        if (isExpanded) {
-          question.setAttribute('aria-expanded', 'false');
-          (answer as HTMLElement).style.maxHeight = '0';
-          (icon as HTMLElement).style.transform = 'rotate(0deg)';
-        } else {
-          question.setAttribute('aria-expanded', 'true');
-          (answer as HTMLElement).style.maxHeight =
-            (answer as HTMLElement).scrollHeight + 'px';
-          (icon as HTMLElement).style.transform = 'rotate(180deg)';
-        }
+        // Toggle current item (no inline styles)
+        const nextState = isExpanded ? 'false' : 'true';
+        question.setAttribute('aria-expanded', nextState);
+        answer.setAttribute('data-open', nextState);
+        icon.setAttribute('data-open', nextState);
       });
     });
   });

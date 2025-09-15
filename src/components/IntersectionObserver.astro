@@ -23,14 +23,14 @@ export interface Props {
   /**
    * その他のHTML属性
    */
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const {
   threshold = 0.1,
-  rootMargin = '0px',
+  rootMargin = "0px",
   repeat = false,
-  class: className = '',
+  class: className = "",
   ...rest
 } = Astro.props;
 ---
