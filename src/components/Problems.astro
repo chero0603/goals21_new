@@ -44,7 +44,11 @@ import { Image } from 'astro:assets';
             loading="lazy"
             format="webp"
           />
-          <Fragment slot="title">海外赴任中に開設した口座が凍結</Fragment>
+          <Fragment slot="title">
+            海外赴任中に開設した
+            <br class="inline sm:hidden" />
+            口座が凍結
+          </Fragment>
           <p>帰国後に放置してしまい、口座が凍結。もう解約したい。</p>
         </ProblemCard>
       </IntersectionObserver>
@@ -61,7 +65,11 @@ import { Image } from 'astro:assets';
             loading="lazy"
             format="webp"
           />
-          <Fragment slot="title">海外口座の自動解約と州政府移管</Fragment>
+          <Fragment slot="title">
+            海外口座の自動解約と
+            <br class="inline sm:hidden" />
+            州政府移管
+          </Fragment>
           <p>
             放置していた凍結口座が自動解約され、預金が州政府に移管されてしまった。
           </p>
