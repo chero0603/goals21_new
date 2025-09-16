@@ -32,9 +32,10 @@
     <div class="mx-auto max-w-4xl">
       <form
         method="POST"
-        action="#contact-form"
+        action="./mail.php"
         id="contact-form"
         class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm"
+        novalidate
       >
         <div class="mb-6 grid gap-6 md:grid-cols-2">
           <div>
@@ -84,6 +85,7 @@
               type="tel"
               id="phone"
               name="phone"
+              required
               placeholder="03-1234-5678"
               class="w-full rounded-md border border-slate-300 px-3 py-2 transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
@@ -157,7 +159,7 @@
         <div class="text-center">
           <button
             type="submit"
-            class="bg-primary-500 hover:bg-primary-400 group inline-flex items-center justify-center gap-3 rounded-full px-16 py-4 font-bold text-white shadow transition-all duration-300 hover:shadow-lg"
+            class="bg-primary-500 hover:bg-primary-400 group inline-flex items-center justify-center gap-3 rounded-full px-16 py-4 font-bold text-white shadow transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
           >
             <span class="text-lg">お問い合わせを送信</span>
           </button>
@@ -166,6 +168,10 @@
     </div>
   </div>
 
+  <!-- フォームバリデーション用スクリプトの読み込み -->
+  <script src="/goals21/form-validation.js" is:inline></script>
+
+  <!-- 既存のローカルストレージ用スクリプト -->
   <script is:inline>
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('contact-form');
@@ -194,7 +200,7 @@
       function scrollToForm() {
         // URLにハッシュが含まれている場合、または成功/エラーメッセージがある場合
         const hasFormHash = window.location.hash === '#contact-form';
-        const hasMessage = document.querySelector('[role="alert"]');
+        const hasMessage = document.querySelector('.notification');
 
         if (hasFormHash || hasMessage) {
           setTimeout(function () {
@@ -261,29 +267,8 @@
         }
       });
 
-      // フォーム送信時の処理
-      form.addEventListener('submit', function (event) {
-        // 送信ボタンを無効化してダブルサブミットを防ぐ
-        const submitButton = form.querySelector('button[type="submit"]');
-        if (submitButton) {
-          submitButton.disabled = true;
-          submitButton.textContent = '送信中...';
-        }
-
-        // データを保存（エラー時の復元用）
-        saveFormData();
-      });
-
-      // 成功時にフォームデータをクリア
-      const successMessage = document.querySelector('[role="alert"]');
-      if (successMessage && successMessage.textContent.includes('ありがとう')) {
-        clearFormData();
-        // フォームをリセット
-        form.reset();
-      } else {
-        // エラーまたは初回表示時は保存されたデータを復元
-        restoreFormData();
-      }
+      // 初回表示時は保存されたデータを復元
+      restoreFormData();
 
       // ページ離脱時にデータを保存
       window.addEventListener('beforeunload', saveFormData);

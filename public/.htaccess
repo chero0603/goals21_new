@@ -1,0 +1,6 @@
+# 最小限のセキュリティ設定
+
+# 設定ファイルへの直接アクセスを禁止
+<Files mail-config.php>
+    deny from all
+</Files>
