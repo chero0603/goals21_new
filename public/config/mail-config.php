@@ -10,8 +10,8 @@ define('COMPANY_NAME', '株式会社GOALs21');
 // メール設定
 // define('ADMIN_EMAIL', 'support@gold-t.tokyo');           // 管理者メールアドレス（要変更）
 // define('SYSTEM_EMAIL', 'support@gold-t.tokyo');       // システム送信用メールアドレス（要変更）
-define('ADMIN_EMAIL', 'support@gold-t.tokyo');           // 管理者メールアドレス（要変更）
-define('SYSTEM_EMAIL', 'chero@grooow.com');       // システム送信用メールアドレス（要変更）
+define('ADMIN_EMAIL', 'supportlp@gold-t.tokyo');           // 管理者メールアドレス（要変更）
+define('SYSTEM_EMAIL', 'supportlp@gold-t.tokyo');       // システム送信用メールアドレス（要変更）
 
 // セキュリティ設定
 define('ALLOWED_DOMAINS', [

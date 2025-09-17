@@ -167,7 +167,7 @@ function createCustomerMailBody($data) {
 株式会社Goals21
 〒103-0027 東京都中央区日本橋3-2-14 日本橋KNビル4F
 TEL: 03-5201-3756 / FAX: 03-5201-3712
-E-mail: support@gold-t.tokyo
+E-mail: supportlp@gold-t.tokyo
 ────────────────────────
 EOT;
 
@@ -347,7 +347,7 @@ try {
         'error_type' => 'system_error',
         'details' => [
             'contact_info' => '電話: 03-5201-3756 (平日 9:00-18:00)',
-            'email_info' => 'support@gold-t.tokyo'
+            'email_info' => 'supportlp@gold-t.tokyo'
         ]
     ]);
 }

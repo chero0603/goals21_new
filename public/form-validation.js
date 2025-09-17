@@ -442,8 +442,8 @@ async function handleFormSubmit(form) {
       formData.append('timestamp', new Date().toISOString());
       formData.append('client_ip', 'browser');
 
-      const phpUrl = window.location.pathname.includes('/goals21/')
-        ? '/goals21/mail.php'
+      const phpUrl = window.location.pathname.includes('/lp/')
+        ? '/lp/mail.php'
         : '/mail.php';
 
       const response = await fetch(phpUrl, {

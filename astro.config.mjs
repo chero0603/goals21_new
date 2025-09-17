@@ -18,7 +18,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/goals21/',
+  base: '/lp/',
   server: {
     host: '0.0.0.0',
     port: 4321,
