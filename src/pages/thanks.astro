@@ -1,0 +1,104 @@
+---
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="お問い合わせ受け付けました | 海外口座解約手続サポート">
+  <Header />
+
+  <div class="mx-auto max-w-4xl px-4 pt-32 pb-24 sm:px-6">
+    <div
+      class="rounded-xl border border-slate-200 bg-white/70 p-8 shadow-sm backdrop-blur"
+    >
+      <div class="mb-6 text-center">
+        <h1
+          class="text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl"
+        >
+          お問い合わせを受け付けました
+        </h1>
+        <p class="mt-3 text-base text-slate-600 sm:text-lg">
+          担当者が内容を確認し、<span class="font-semibold">
+            通常2営業日以内
+          </span>にご連絡いたします。<br class="hidden sm:inline" />
+          しばらくお待ちください。
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        <section class="rounded-lg bg-slate-50 p-6">
+          <h2
+            class="mb-3 flex items-center gap-2 text-lg font-semibold text-slate-700"
+          >
+            <span
+              class="icon-[mdi--email-check-outline] text-primary-500 text-2xl"
+              aria-hidden="true"
+            >
+            </span>
+            ご確認ください
+          </h2>
+          <ul
+            class="list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-600"
+          >
+            <li>
+              自動返信メールを <span class="font-medium">
+                送信しております
+              </span>。受信トレイ / 迷惑メールフォルダをご確認ください。
+            </li>
+            <li>
+              届いていない場合は、メールアドレスの誤入力やフィルタ設定の可能性があります。
+            </li>
+            <li>
+              お急ぎの場合はお電話でも承ります：<span class="font-semibold">
+                03-5201-3756（平日 9:00-18:00）
+              </span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="rounded-lg bg-slate-50 p-6">
+          <h2
+            class="mb-3 flex items-center gap-2 text-lg font-semibold text-slate-700"
+          >
+            <span
+              class="icon-[mdi--shield-check-outline] text-primary-500 text-2xl"
+              aria-hidden="true"
+            >
+            </span>
+            個人情報のお取り扱い
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            ご入力いただいた情報は、弊社サービスのご案内およびご連絡の目的にのみ利用し、適切に管理いたします。第三者に無断で提供することはありません。
+          </p>
+          <p class="mt-2 text-right text-xs text-slate-400">
+            プライバシーポリシーはフッターのリンクよりご確認いただけます。
+          </p>
+        </section>
+      </div>
+
+      <div
+        class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+      >
+        <a
+          href="/lp/"
+          class="group bg-primary-500 hover:bg-primary-400 inline-flex items-center gap-2 rounded-full px-8 py-3 font-semibold text-white shadow transition"
+        >
+          <span
+            class="icon-[mdi--home] text-xl transition-transform group-hover:-translate-y-0.5"
+          >
+          </span>
+          トップページへ戻る
+        </a>
+        <a
+          href="/lp/#contact"
+          class="border-primary-500 text-primary-600 hover:bg-primary-50 inline-flex items-center gap-2 rounded-full border px-8 py-3 font-semibold transition"
+        >
+          <span class="icon-[mdi--reply] text-xl"></span>
+          もう一度問い合わせる
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>

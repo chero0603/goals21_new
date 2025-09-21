@@ -501,8 +501,12 @@ async function handleFormSubmit(form) {
       // ローカルストレージからフォームデータを削除
       localStorage.removeItem('contact_form_data');
 
-      // 成功メッセージを画面上部にも表示
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // 送信成功後にサンクスページへ遷移（通知表示のため短い遅延）
+      setTimeout(() => {
+        // Astro の base '/lp/' を考慮した遷移
+        const base = '/lp';
+        window.location.href = `${base}/thanks`;
+      }, 600);
     } else {
       // エラー時の処理
       let errorMessage = result.message || 'エラーが発生しました';
