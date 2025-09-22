@@ -24,6 +24,10 @@ define('ALLOWED_DOMAINS', [
 // その他の設定
 define('LOG_ENABLED', true);       // ログ記録の有効/無効
 define('DEBUG_MODE', false);       // デバッグモード（本番では false）
+// デバッグ用BCC（配信経路確認に使用。不要なら空文字のまま）
+define('DEBUG_BCC_EMAIL', '');
+// サーバードメインに合わせてEnvelope-From/Fromを自動調整（制限緩和）
+define('RELAX_FROM_POLICY', true);
 
 /**
  * レンタルサーバー別の設定例

@@ -442,9 +442,8 @@ async function handleFormSubmit(form) {
       formData.append('timestamp', new Date().toISOString());
       formData.append('client_ip', 'browser');
 
-      const phpUrl = window.location.pathname.includes('/lp/')
-        ? '/lp/mail.php'
-        : '/mail.php';
+      // フォームのaction属性から送信先URLを取得
+      const phpUrl = form.getAttribute('action') || '/mail.php';
 
       const response = await fetch(phpUrl, {
         method: 'POST',

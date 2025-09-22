@@ -175,7 +175,7 @@ EOT;
 }
 
 // メール送信処理
-function sendMail($to, $subject, $body, $headers) {
+function sendMail($to, $subject, $body, $headers, $envelopeFrom = SYSTEM_EMAIL) {
     // MB_Stringの設定
     mb_language('ja');
     mb_internal_encoding('UTF-8');
@@ -185,7 +185,9 @@ function sendMail($to, $subject, $body, $headers) {
     ini_set('default_charset', 'UTF-8');
     
     // 件名をそのまま送信（UTF-8で）
-    $result = mb_send_mail($to, $subject, $body, $headers);
+    // レンタルサーバー対策としてエンベロープFromを指定
+    $additionalParams = '-f' . $envelopeFrom;
+    $result = mb_send_mail($to, $subject, $body, $headers, $additionalParams);
     
     // 設定を元に戻す
     ini_set('default_charset', $original_charset);
@@ -198,6 +200,7 @@ try {
     // POSTリクエストのみ許可
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         http_response_code(405);
+        header('Content-Type: application/json; charset=UTF-8');
         echo json_encode([
             'success' => false,
             'message' => '不正なアクセス方法です。お問い合わせフォームから送信してください。',
@@ -245,6 +248,7 @@ try {
     $errors = validateContactForm($formData);
     if (!empty($errors)) {
         http_response_code(400);
+        header('Content-Type: application/json; charset=UTF-8');
         echo json_encode([
             'success' => false,
             'message' => '入力内容に不備があります。以下の項目をご確認ください。',
@@ -267,42 +271,61 @@ try {
         $replyToName = mb_encode_mimeheader($replyToName, 'UTF-8', 'B');
     }
     
-    $adminHeaders = "From: " . $fromName . " <" . SYSTEM_EMAIL . ">\r\n";
+    // 制限緩和: ドメイン不一致時の自動調整
+    $host = $_SERVER['HTTP_HOST'] ?? '';
+    $fallbackSender = $host ? ('noreply@' . preg_replace('/^www\./', '', $host)) : SYSTEM_EMAIL;
+    $fromAddress = (defined('RELAX_FROM_POLICY') && RELAX_FROM_POLICY) ? $fallbackSender : SYSTEM_EMAIL;
+
+    $adminHeaders = "From: " . $fromName . " <" . $fromAddress . ">\r\n";
     $adminHeaders .= "Reply-To: " . $replyToName . " <" . $mailData['email'] . ">\r\n";
     $adminHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $adminHeaders .= "Content-Transfer-Encoding: 8bit\r\n";
+    $adminHeaders .= "MIME-Version: 1.0\r\n";
+    $adminHeaders .= "Sender: " . SYSTEM_EMAIL . "\r\n";
+    if (defined('DEBUG_BCC_EMAIL') && DEBUG_BCC_EMAIL) {
+        $adminHeaders .= "Bcc: " . DEBUG_BCC_EMAIL . "\r\n";
+    }
     $adminHeaders .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
-    $customerHeaders = "From: " . $fromName . " <" . ADMIN_EMAIL . ">\r\n";
+    $customerHeaders = "From: " . $fromName . " <" . $fromAddress . ">\r\n";
     $customerHeaders .= "Reply-To: " . ADMIN_EMAIL . "\r\n";
     $customerHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $customerHeaders .= "Content-Transfer-Encoding: 8bit\r\n";
+    $customerHeaders .= "MIME-Version: 1.0\r\n";
+    $customerHeaders .= "Sender: " . SYSTEM_EMAIL . "\r\n";
+    if (defined('DEBUG_BCC_EMAIL') && DEBUG_BCC_EMAIL) {
+        $customerHeaders .= "Bcc: " . DEBUG_BCC_EMAIL . "\r\n";
+    }
     $customerHeaders .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
     // 管理者向けメール送信
     $adminSubject = '【お問い合わせ】' . $mailData['subject'];
     $adminBody = createAdminMailBody($mailData);
-    $adminSent = sendMail(ADMIN_EMAIL, $adminSubject, $adminBody, $adminHeaders);
+    $adminSent = sendMail(ADMIN_EMAIL, $adminSubject, $adminBody, $adminHeaders, $fromAddress);
 
     // お客様向け自動返信メール送信
     $customerSubject = 'お問い合わせありがとうございます【' . COMPANY_NAME . '】';
     $customerBody = createCustomerMailBody($mailData);
-    $customerSent = sendMail($mailData['email'], $customerSubject, $customerBody, $customerHeaders);
+    $customerSent = sendMail($mailData['email'], $customerSubject, $customerBody, $customerHeaders, $fromAddress);
 
     // 結果の判定
-    if ($adminSent && $customerSent) {
+    if ($adminSent) {
         // ログ記録（オプション）
         error_log("Contact form success: {$mailData['email']} - {$mailData['subject']}", 0);
         
         http_response_code(200);
+        header('Content-Type: application/json; charset=UTF-8');
         echo json_encode([
             'success' => true,
-            'message' => 'お問い合わせを受け付けました！ご入力いただいたメールアドレスに確認メールをお送りしました。担当者より2営業日以内にご連絡いたします。',
+            'message' => $customerSent
+                ? 'お問い合わせを受け付けました！ご入力いただいたメールアドレスに確認メールをお送りしました。担当者より2営業日以内にご連絡いたします。'
+                : 'お問い合わせを受け付けました。確認メールの送信に一時的に失敗しましたが、担当者よりご連絡いたします。',
             'details' => [
                 'sent_to_admin' => true,
-                'sent_to_customer' => true,
+                'sent_to_customer' => (bool) $customerSent,
                 'customer_email' => $mailData['email']
-            ]
+            ],
+            'warnings' => $customerSent ? [] : ['customer_auto_reply_failed']
         ]);
     } else {
         // 詳細なエラー情報を提供
@@ -313,12 +336,9 @@ try {
             $userMessage = 'メール送信に失敗しました。時間をおいて再度お試しいただくか、お電話にてお問い合わせください。';
             $errorDetails['issue'] = 'both_failed';
         } elseif (!$adminSent) {
-            $userMessage = 'お問い合わせの受付に失敗しました。お電話にてお問い合わせください。';
+            $userMessage = 'お問い合わせの受付メールの送信に失敗しました。お電話にてお問い合わせください。';
             $errorDetails['issue'] = 'admin_failed';
-        } elseif (!$customerSent) {
-            $userMessage = 'お問い合わせは受け付けましたが、確認メールの送信に失敗しました。担当者より直接ご連絡いたします。';
-            $errorDetails['issue'] = 'customer_failed';
-        }
+        } 
         
         // エラーログ記録
         error_log("Mail send failed - Admin: " . ($adminSent ? 'OK' : 'FAIL') . 
@@ -326,6 +346,7 @@ try {
                  " - Email: {$mailData['email']}", 0);
         
         http_response_code(500);
+        header('Content-Type: application/json; charset=UTF-8');
         echo json_encode([
             'success' => false,
             'message' => $userMessage,
@@ -341,6 +362,7 @@ try {
 } catch (Exception $e) {
     error_log("Contact form error: " . $e->getMessage() . " - File: " . $e->getFile() . " - Line: " . $e->getLine(), 0);
     http_response_code(500);
+    header('Content-Type: application/json; charset=UTF-8');
     echo json_encode([
         'success' => false,
         'message' => 'システムエラーが発生しました。恐れ入りますが、時間をおいて再度お試しいただくか、お電話にてお問い合わせください。',
