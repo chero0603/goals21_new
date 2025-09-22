@@ -508,8 +508,10 @@ async function handleFormSubmit(form) {
         window.location.href = `${base}/thanks`;
       }, 600);
     } else {
-      // エラー時の処理
-      let errorMessage = result.message || 'エラーが発生しました';
+      // エラー時の処理（thanksページへ遷移しない）
+      let errorMessage =
+        result.message ||
+        'メール送信に失敗しました。時間をおいて再度お試しください。';
       let notificationType = 'error';
 
       // エラーの種類に応じてメッセージを調整
@@ -544,6 +546,7 @@ async function handleFormSubmit(form) {
 
       // フォームの先頭にスクロール（エラー確認のため）
       form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // フォームリセットは行わない
     }
   } catch (error) {
     console.error('Form submission error:', error);
@@ -563,6 +566,7 @@ async function handleFormSubmit(form) {
       '<br><br>問題が続く場合は、お電話にてお問い合わせください。<br>📞 03-5201-3756 (平日 9:00-18:00)';
 
     showNotification(errorMessage, 'error', 12000);
+    // thanksページへ遷移しない・フォームリセットしない
   } finally {
     // 送信ボタンを元に戻す
     submitButton.disabled = false;
