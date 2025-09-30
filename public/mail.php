@@ -176,22 +176,50 @@ EOT;
 
 // メール送信処理
 function sendMail($to, $subject, $body, $headers, $envelopeFrom = SYSTEM_EMAIL) {
-    // MB_Stringの設定
     mb_language('ja');
     mb_internal_encoding('UTF-8');
-    
-    // PHPのメール設定を一時的に変更
-    $original_charset = ini_get('default_charset');
+
+    $originalCharset = ini_get('default_charset');
     ini_set('default_charset', 'UTF-8');
-    
-    // 件名をそのまま送信（UTF-8で）
-    // レンタルサーバー対策としてエンベロープFromを指定
-    $additionalParams = '-f' . $envelopeFrom;
-    $result = mb_send_mail($to, $subject, $body, $headers, $additionalParams);
-    
-    // 設定を元に戻す
-    ini_set('default_charset', $original_charset);
-    
+
+    $candidates = array_values(array_unique(array_filter([$envelopeFrom, SYSTEM_EMAIL])));
+    $result = false;
+
+    foreach ($candidates as $candidate) {
+        $additionalParams = $candidate ? '-f' . $candidate : '';
+
+        if ($additionalParams !== '') {
+            $result = mb_send_mail($to, $subject, $body, $headers, $additionalParams);
+        } else {
+            $result = mb_send_mail($to, $subject, $body, $headers);
+        }
+
+        if ($result) {
+            break;
+        }
+
+        // フォールバック: 通常のmail関数でも試行
+        $encodedSubject = mb_encode_mimeheader($subject, 'UTF-8', 'B');
+        if ($additionalParams !== '') {
+            $result = mail($to, $encodedSubject, $body, $headers, $additionalParams);
+        } else {
+            $result = mail($to, $encodedSubject, $body, $headers);
+        }
+
+        if ($result) {
+            break;
+        }
+    }
+
+    ini_set('default_charset', $originalCharset);
+
+    if (!$result && defined('DEBUG_MODE') && DEBUG_MODE) {
+        error_log(
+            'Mail send failure: ' . $to . ' subject=' . $subject,
+            0
+        );
+    }
+
     return $result;
 }
 
@@ -273,8 +301,15 @@ try {
     
     // 制限緩和: ドメイン不一致時の自動調整
     $host = $_SERVER['HTTP_HOST'] ?? '';
-    $fallbackSender = $host ? ('noreply@' . preg_replace('/^www\./', '', $host)) : SYSTEM_EMAIL;
-    $fromAddress = (defined('RELAX_FROM_POLICY') && RELAX_FROM_POLICY) ? $fallbackSender : SYSTEM_EMAIL;
+    $normalizedHost = preg_replace(['/^www\./', '/:\d+$/'], '', $host);
+    $fromAddress = SYSTEM_EMAIL;
+
+    if (defined('RELAX_FROM_POLICY') && RELAX_FROM_POLICY && $normalizedHost) {
+        $candidateFrom = 'noreply@' . $normalizedHost;
+        if (filter_var($candidateFrom, FILTER_VALIDATE_EMAIL)) {
+            $fromAddress = $candidateFrom;
+        }
+    }
 
     $adminHeaders = "From: " . $fromName . " <" . $fromAddress . ">\r\n";
     $adminHeaders .= "Reply-To: " . $replyToName . " <" . $mailData['email'] . ">\r\n";
@@ -282,6 +317,7 @@ try {
     $adminHeaders .= "Content-Transfer-Encoding: 8bit\r\n";
     $adminHeaders .= "MIME-Version: 1.0\r\n";
     $adminHeaders .= "Sender: " . SYSTEM_EMAIL . "\r\n";
+    $adminHeaders .= "Return-Path: " . SYSTEM_EMAIL . "\r\n";
     if (defined('DEBUG_BCC_EMAIL') && DEBUG_BCC_EMAIL) {
         $adminHeaders .= "Bcc: " . DEBUG_BCC_EMAIL . "\r\n";
     }
@@ -293,6 +329,7 @@ try {
     $customerHeaders .= "Content-Transfer-Encoding: 8bit\r\n";
     $customerHeaders .= "MIME-Version: 1.0\r\n";
     $customerHeaders .= "Sender: " . SYSTEM_EMAIL . "\r\n";
+    $customerHeaders .= "Return-Path: " . SYSTEM_EMAIL . "\r\n";
     if (defined('DEBUG_BCC_EMAIL') && DEBUG_BCC_EMAIL) {
         $customerHeaders .= "Bcc: " . DEBUG_BCC_EMAIL . "\r\n";
     }

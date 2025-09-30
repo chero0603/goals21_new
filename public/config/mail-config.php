@@ -18,7 +18,7 @@ define('ALLOWED_DOMAINS', [
     'localhost',                    // 開発環境
     '127.0.0.1',                   // 開発環境
     'gold-t.tokyo',             // 本番ドメイン（要変更）
-    'gold-t.tokyo'          // 本番ドメイン（要変更）
+    'www.gold-t.tokyo',         // www付きドメイン
 ]);
 
 // その他の設定

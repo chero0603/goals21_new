@@ -15,11 +15,20 @@ const validators = {
     return emailRegex.test(value);
   },
 
-  // 電話番号のバリデーション（日本形式）
+  // 電話番号のバリデーション（国際形式にも対応）
   phone: value => {
-    const phoneRegex =
-      /^(0[1-9]\d{0,3}-?\d{1,4}-?\d{4}|050-?\d{4}-?\d{4}|070-?\d{4}-?\d{4}|080-?\d{4}-?\d{4}|090-?\d{4}-?\d{4})$/;
-    return phoneRegex.test(value.replace(/[\s\-]/g, ''));
+    if (!value || value.trim().length === 0) {
+      return true;
+    }
+
+    const normalized = value.replace(/[^0-9+]/g, '');
+
+    if (normalized === '' || normalized === '+') {
+      return false;
+    }
+
+    const phoneRegex = /^\+?\d{7,15}$/;
+    return phoneRegex.test(normalized);
   },
 
   // 最小文字数チェック
@@ -36,8 +45,6 @@ const validators = {
 // エラーメッセージ
 const errorMessages = {
   required: 'この項目は必須です',
-  email: '正しいメールアドレスを入力してください',
-  phone: '正しい電話番号を入力してください',
   minLength: min => `${min}文字以上で入力してください`,
   maxLength: max => `${max}文字以内で入力してください`,
   name: {
@@ -49,17 +56,15 @@ const errorMessages = {
     email: '正しいメールアドレスを入力してください',
   },
   phone: {
-    required: '電話番号は必須です',
-    phone: '正しい電話番号を入力してください',
+    phone: '電話番号の形式が正しくありません',
   },
   subject: {
-    required: '件名は必須です',
     maxLength: '件名は100文字以内で入力してください',
   },
   message: {
     required: 'お問い合わせ内容は必須です',
-    minLength: 'お問い合わせ内容は10文字以上で入力してください',
-    maxLength: 'お問い合わせ内容は2000文字以内で入力してください',
+    minLength: 'お問い合わせ内容は3文字以上で入力してください',
+    maxLength: 'お問い合わせ内容は4000文字以内で入力してください',
   },
   inquiry_type: {
     required: 'お問い合わせ種別を選択してください',
@@ -70,12 +75,12 @@ const errorMessages = {
 const validationRules = {
   name: [{ type: 'required' }, { type: 'maxLength', value: 50 }],
   email: [{ type: 'required' }, { type: 'email' }],
-  phone: [{ type: 'required' }, { type: 'phone' }],
-  subject: [{ type: 'required' }, { type: 'maxLength', value: 100 }],
+  phone: [{ type: 'phone' }],
+  subject: [{ type: 'maxLength', value: 100 }],
   message: [
     { type: 'required' },
-    { type: 'minLength', value: 10 },
-    { type: 'maxLength', value: 2000 },
+    { type: 'minLength', value: 3 },
+    { type: 'maxLength', value: 4000 },
   ],
   inquiry_type: [{ type: 'required' }],
 };
@@ -110,7 +115,7 @@ function validateField(fieldName, value) {
 
     if (!isValid) {
       const fieldMessages = errorMessages[fieldName];
-      if (fieldMessages && fieldMessages[rule.type]) {
+      if (fieldMessages?.[rule.type]) {
         errors.push(fieldMessages[rule.type]);
       } else if (typeof errorMessages[rule.type] === 'function') {
         errors.push(errorMessages[rule.type](rule.value));
@@ -166,9 +171,9 @@ function removeFieldError(fieldName) {
 
 // すべてのエラーを削除
 function clearAllErrors() {
-  Object.keys(validationRules).forEach(fieldName => {
+  for (const fieldName of Object.keys(validationRules)) {
     removeFieldError(fieldName);
-  });
+  }
 }
 
 // フォーム全体のバリデーション
@@ -176,7 +181,7 @@ function validateForm(formData) {
   const results = {};
   let isFormValid = true;
 
-  Object.keys(validationRules).forEach(fieldName => {
+  for (const fieldName of Object.keys(validationRules)) {
     const value = formData.get(fieldName) || '';
     const result = validateField(fieldName, value);
     results[fieldName] = result;
@@ -184,7 +189,7 @@ function validateForm(formData) {
     if (!result.isValid) {
       isFormValid = false;
     }
-  });
+  }
 
   return {
     isValid: isFormValid,
@@ -221,9 +226,11 @@ function updateCharacterCount(fieldName, maxLength) {
 
 // リアルタイムバリデーション
 function setupRealtimeValidation() {
-  Object.keys(validationRules).forEach(fieldName => {
+  for (const fieldName of Object.keys(validationRules)) {
     const field = document.getElementById(fieldName);
-    if (!field) return;
+    if (!field) {
+      continue;
+    }
 
     // 文字数カウンターの設定
     const maxLengthRule = validationRules[fieldName].find(
@@ -255,21 +262,22 @@ function setupRealtimeValidation() {
         removeFieldError(fieldName);
       }
     });
-  });
+  }
 }
 
 // 通知メッセージ表示（拡張版）
 function showNotification(message, type = 'success', duration = 5000) {
   // 既存の通知の位置を調整
   const existingNotifications = document.querySelectorAll('.notification');
-  existingNotifications.forEach((notification, index) => {
-    const currentBottom = parseInt(notification.style.bottom) || 32;
+  for (const notification of existingNotifications) {
+    const currentBottom = Number.parseInt(notification.style.bottom) || 32;
     notification.style.bottom = `${currentBottom + 80}px`;
     notification.style.transition = 'all 0.3s ease-in-out';
-  });
+  }
 
   const notification = document.createElement('div');
-  notification.className = `notification fixed left-1/2 transform -translate-x-1/2 z-50 max-w-md w-11/12 sm:w-auto rounded-lg border px-6 py-4 shadow-xl transition-all duration-500 translate-y-full`;
+  notification.className =
+    'notification fixed left-1/2 transform -translate-x-1/2 z-50 max-w-md w-11/12 sm:w-auto rounded-lg border px-6 py-4 shadow-xl transition-all duration-500 translate-y-full';
   notification.style.bottom = '32px'; // 初期位置
 
   // アイコンを追加
@@ -338,10 +346,12 @@ function showNotification(message, type = 'success', duration = 5000) {
 // 通知の位置を再調整する関数
 function adjustNotificationPositions() {
   const notifications = document.querySelectorAll('.notification');
-  notifications.forEach((notification, index) => {
+  let index = 0;
+  for (const notification of notifications) {
     notification.style.bottom = `${32 + index * 80}px`;
     notification.style.transition = 'all 0.3s ease-in-out';
-  });
+    index += 1;
+  }
 }
 
 // 通知を閉じる関数
@@ -364,14 +374,14 @@ async function handleFormSubmit(form) {
   const validation = validateForm(formData);
 
   // エラー表示
-  Object.keys(validation.results).forEach(fieldName => {
+  for (const fieldName of Object.keys(validation.results)) {
     const result = validation.results[fieldName];
     if (!result.isValid) {
       showFieldError(fieldName, result.errors);
     } else {
       removeFieldError(fieldName);
     }
-  });
+  }
 
   if (!validation.isValid) {
     // エラーのある項目数をカウント
@@ -453,7 +463,7 @@ async function handleFormSubmit(form) {
       // レスポンスの処理
       const contentType = response.headers.get('content-type');
 
-      if (contentType && contentType.includes('application/json')) {
+      if (contentType?.includes('application/json')) {
         result = await response.json();
       } else {
         // PHPスクリプトからのレスポンス（JSON形式でない場合）
@@ -488,14 +498,14 @@ async function handleFormSubmit(form) {
       clearAllErrors();
 
       // 文字数カウンターもリセット
-      Object.keys(validationRules).forEach(fieldName => {
+      for (const fieldName of Object.keys(validationRules)) {
         const maxLengthRule = validationRules[fieldName].find(
           rule => rule.type === 'maxLength'
         );
         if (maxLengthRule) {
           updateCharacterCount(fieldName, maxLengthRule.value);
         }
-      });
+      }
 
       // ローカルストレージからフォームデータを削除
       localStorage.removeItem('contact_form_data');
@@ -528,7 +538,7 @@ async function handleFormSubmit(form) {
         }
       } else if (result.error_type === 'mail_send') {
         // メール送信エラーの場合、詳細情報を含める
-        if (result.details && result.details.contact_info) {
+        if (result.details?.contact_info) {
           errorMessage += `<br><br>📞 ${result.details.contact_info}`;
         }
       } else if (result.error_type === 'system_error') {
@@ -577,12 +587,12 @@ async function handleFormSubmit(form) {
 }
 
 // 初期化
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   setupRealtimeValidation();
 
   const form = document.getElementById('contact-form');
   if (form) {
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', event => {
       event.preventDefault();
       handleFormSubmit(form);
     });
